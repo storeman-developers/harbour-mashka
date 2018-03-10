@@ -72,8 +72,8 @@
     </message>
     <message id="mashka-banner">
         <location filename="../qml/pages/BannerPage.qml" line="25"/>
-        <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already cleared more than 50&amp;nbsp;MB of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;Эй, на палубе!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Уже некоторое время вы пользуетесь приложением и успели удалить более 50 МБ неиспользуемых данных.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Пожалуйста, рассмотрите возможность небольшой помощи автору ;)&lt;/p&gt;</translation>
+        <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already cleared more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
+        <translation>&lt;h3&gt;Эй, на палубе!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Уже некоторое время вы пользуетесь приложением и успели удалить более %1 неиспользуемых данных.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Пожалуйста, рассмотрите возможность небольшой помощи автору ;)&lt;/p&gt;</translation>
     </message>
     <message id="mashka-not-show">
         <location filename="../qml/pages/BannerPage.qml" line="50"/>
