@@ -17,3 +17,7 @@ If you want to test your translation before publishing you should compile it and
 The application tries to load translation files automatically basing on your system locale settings. Also you can run application with selected locale from terminal. For example for Russian language the command is
 
     LANG=ru harbour-mashka
+
+## Third-party
+
+The Cleaning Mop icon from [Flaticon](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

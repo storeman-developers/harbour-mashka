@@ -40,6 +40,7 @@ DISTFILES += \
     qml/components/EntryDelegate.qml \
     qml/components/Hint.qml \
     qml/components/HintLabel.qml \
+    icons/harbour-mashka.svg \
     rpm/harbour-mashka.changes \
     rpm/harbour-mashka.spec \
     rpm/harbour-mashka.yaml \

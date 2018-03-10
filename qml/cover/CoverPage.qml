@@ -5,7 +5,7 @@ import Sailfish.Silica 1.0
 CoverBackground {
 
     CoverPlaceholder {
-        icon.source: "image://theme/icon-launcher-default"
+        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-mashka.png"
         text: {
             if (mmodel.busy) {
                 //% "Working..."
