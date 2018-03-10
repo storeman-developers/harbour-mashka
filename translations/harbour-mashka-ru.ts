@@ -20,7 +20,7 @@
         <translation>Можно удалить %1</translation>
     </message>
     <message id="mashka-bytes" numerus="yes">
-        <location filename="../qml/harbour-mashka.qml" line="18"/>
+        <location filename="../qml/harbour-mashka.qml" line="19"/>
         <source>%n byte(s)</source>
         <translation>
             <numerusform>%n байт</numerusform>
@@ -28,45 +28,33 @@
             <numerusform>%n байтов</numerusform>
         </translation>
     </message>
-    <message id="mashka-kb" numerus="yes">
-        <location filename="../qml/harbour-mashka.qml" line="21"/>
-        <source>%n KB</source>
-        <translation>
-            <numerusform>%n КБ</numerusform>
-            <numerusform>%n КБ</numerusform>
-            <numerusform>%n КБ</numerusform>
-        </translation>
+    <message id="mashka-kb">
+        <location filename="../qml/harbour-mashka.qml" line="22"/>
+        <source>%1 KB</source>
+        <translation>%1 КБ</translation>
     </message>
-    <message id="mashka-mb" numerus="yes">
-        <location filename="../qml/harbour-mashka.qml" line="24"/>
-        <source>%n MB</source>
-        <translation>
-            <numerusform>%n МБ</numerusform>
-            <numerusform>%n МБ</numerusform>
-            <numerusform>%n МБ</numerusform>
-        </translation>
+    <message id="mashka-mb">
+        <location filename="../qml/harbour-mashka.qml" line="25"/>
+        <source>%1 MB</source>
+        <translation>%1 МБ</translation>
     </message>
-    <message id="mashka-gb" numerus="yes">
-        <location filename="../qml/harbour-mashka.qml" line="27"/>
-        <source>%n GB</source>
-        <translation>
-            <numerusform>%n ГБ</numerusform>
-            <numerusform>%n ГБ</numerusform>
-            <numerusform>%n ГБ</numerusform>
-        </translation>
+    <message id="mashka-gb">
+        <location filename="../qml/harbour-mashka.qml" line="28"/>
+        <source>%1 GB</source>
+        <translation>%1 ГБ</translation>
     </message>
     <message id="mashka-notification-cleared">
-        <location filename="../qml/harbour-mashka.qml" line="70"/>
+        <location filename="../qml/harbour-mashka.qml" line="71"/>
         <source>Cleared %1</source>
         <translation>Удалено %1</translation>
     </message>
     <message id="mashka-notification-error-title">
-        <location filename="../qml/harbour-mashka.qml" line="76"/>
+        <location filename="../qml/harbour-mashka.qml" line="77"/>
         <source>An error occured!</source>
         <translation>Произошла ошибка!</translation>
     </message>
     <message id="mashka-notification-error-body">
-        <location filename="../qml/harbour-mashka.qml" line="78"/>
+        <location filename="../qml/harbour-mashka.qml" line="79"/>
         <source>Error removing &amp;quot;%1&amp;quot;.</source>
         <translation>Ошибка при удалении &amp;quot;%1&amp;quot;.</translation>
     </message>

@@ -4,6 +4,7 @@ import Nemo.Notifications 1.0
 import harbour.mashka 1.0
 
 ApplicationWindow {
+    readonly property var _locale: Qt.locale()
 
     function prettyBytes(bytes) {
         var i = 0
@@ -17,14 +18,14 @@ ApplicationWindow {
             //% "%n byte(s)"
             return qsTrId("mashka-bytes", bytes)
         case 1:
-            //% "%n KB"
-            return qsTrId("mashka-kb", bytes)
+            //% "%1 KB"
+            return qsTrId("mashka-kb").arg(Number(bytes).toLocaleString(_locale, 'f', 0))
         case 2:
-            //% "%n MB"
-            return qsTrId("mashka-mb", bytes)
+            //% "%1 MB"
+            return qsTrId("mashka-mb").arg(Number(bytes).toLocaleString(_locale, 'f', 0))
         case 3:
-            //% "%n GB"
-            return qsTrId("mashka-gb", bytes)
+            //% "%1 GB"
+            return qsTrId("mashka-gb").arg(Number(bytes).toLocaleString(_locale, 'f', 1))
         default:
             return ""
         }
