@@ -10,7 +10,8 @@ Item {
 
     opacity: visible2 ? 1.0 : 0.0
     visible: opacity === 1.0
-    width: (parent.width - Theme.horizontalPageMargin * 2) / content.columns
+    width: page.orientation === Orientation.Portrait ?
+               parent.width : (parent.width - Theme.horizontalPageMargin * 2) / content.columns
     height: titleLabel.height + dataSizeLabel.height + appsCountLabel.height
 
     Behavior on opacity { FadeAnimation { } }
