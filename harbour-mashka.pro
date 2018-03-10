@@ -44,6 +44,7 @@ DISTFILES += \
     rpm/harbour-mashka.spec \
     rpm/harbour-mashka.yaml \
     translations/*.ts \
+    .tx/config \
     harbour-mashka.desktop \
     .gitignore \
     LICENSE \

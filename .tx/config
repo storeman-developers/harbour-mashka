@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[harbour-mashka.harbour-mashka_ts]
+source_file = translations/harbour-mashka.ts
+source_lang = en
+type = QT
+file_filter = translations/harbour-mashka-<lang>.ts
