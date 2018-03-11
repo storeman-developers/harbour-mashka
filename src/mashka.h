@@ -9,6 +9,8 @@ class Mashka : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(qint64 totalClearedSize READ totalClearedSize NOTIFY totalClearedSizeChanged)
+    Q_PROPERTY(bool advancedOptionsEnabled READ advancedOptionsEnabled WRITE setAdvancedOptionsEnabled NOTIFY advancedOptionsEnabledChanged)
+    Q_PROPERTY(bool deleteAllDataAllowed READ deleteAllDataAllowed WRITE setDeleteAllDataAllowed NOTIFY deleteAllDataAllowedChanged)
 
 public:
     enum Hint
@@ -27,9 +29,18 @@ public:
 
     qint64 totalClearedSize() const;
     Q_INVOKABLE void addClearedSize(const qint64 &size);
+    Q_INVOKABLE void resetClearedSize();
+
+    bool advancedOptionsEnabled() const;
+    void setAdvancedOptionsEnabled(bool value);
+
+    bool deleteAllDataAllowed() const;
+    void setDeleteAllDataAllowed(bool value);
 
 signals:
     void totalClearedSizeChanged();
+    void advancedOptionsEnabledChanged();
+    void deleteAllDataAllowedChanged();
 
 public slots:
 

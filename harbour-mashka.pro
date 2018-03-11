@@ -33,6 +33,7 @@ DISTFILES += \
     qml/pages/BannerPage.qml \
     qml/pages/ConfirmationDialog.qml \
     qml/pages/AboutPage.qml \
+    qml/pages/SettingsPage.qml \
     qml/components/RescanMenuEntry.qml \
     qml/components/DataLabel.qml \
     qml/components/PlainButton.qml \
@@ -40,6 +41,7 @@ DISTFILES += \
     qml/components/EntryDelegate.qml \
     qml/components/Hint.qml \
     qml/components/HintLabel.qml \
+    qml/components/ListMenuItem.qml \
     icons/harbour-mashka.svg \
     rpm/harbour-mashka.changes \
     rpm/harbour-mashka.spec \

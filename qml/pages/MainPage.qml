@@ -57,6 +57,11 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
 
+            MenuItem {
+                text: qsTrId("mashka-settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
+
             RescanMenuEntry { }
         }
 

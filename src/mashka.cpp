@@ -63,3 +63,44 @@ void Mashka::addClearedSize(const qint64 &size)
     m_settings->setValue(key, current + size);
     emit this->totalClearedSizeChanged();
 }
+
+void Mashka::resetClearedSize()
+{
+    qDebug("Resetting TotalCleared value");
+    m_settings->remove(QStringLiteral("TotalCleared"));
+    emit this->totalClearedSizeChanged();
+}
+
+bool Mashka::advancedOptionsEnabled() const
+{
+    return m_settings->value(QStringLiteral("AdvancedOptionsEnabled")).toBool();
+}
+
+void Mashka::setAdvancedOptionsEnabled(bool value)
+{
+    QString key(QStringLiteral("AdvancedOptionsEnabled"));
+    if (m_settings->value(key).toBool() != value)
+    {
+        m_settings->setValue(key, value);
+        emit this->advancedOptionsEnabledChanged();
+        if (!value)
+        {
+            this->setDeleteAllDataAllowed(false);
+        }
+    }
+}
+
+bool Mashka::deleteAllDataAllowed() const
+{
+    return m_settings->value(QStringLiteral("DeleteAllDataAllowed")).toBool();
+}
+
+void Mashka::setDeleteAllDataAllowed(bool value)
+{
+    QString key(QStringLiteral("DeleteAllDataAllowed"));
+    if (m_settings->value(key).toBool() != value)
+    {
+        m_settings->setValue(key, value);
+        emit this->deleteAllDataAllowedChanged();
+    }
+}

@@ -27,7 +27,7 @@ ListItem {
 
         MenuItem {
             id: deleteConfigItem
-            visible: !installed && configSize > 0
+            visible: (!installed || mashka.deleteAllDataAllowed) && configSize > 0
             //% "Delete configuration"
             text: qsTrId("mashka-delete-config")
             //% "Deleting configuration"
@@ -49,7 +49,7 @@ ListItem {
 
         MenuItem {
             id: deleteLocalDataItem
-            visible: !installed && localDataSize > 0
+            visible: (!installed || mashka.deleteAllDataAllowed) && localDataSize > 0
             //% "Delete local data"
             text: qsTrId("mashka-delete-localdata")
             //% "Deleting local data"
