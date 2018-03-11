@@ -20,7 +20,7 @@ ListItem {
             //% "Delete all data"
             text: qsTrId("mashka-delete-all")
             //% "Deleting all data"
-            onClicked: Remorse.popupAction(page, qsTrId("mashka-deleting-alldata"), function() {
+            onClicked: remorseAction(qsTrId("mashka-deleting-alldata"), function() {
                 mmodel.clearData(name, MModel.AllData)
             })
         }
@@ -31,7 +31,7 @@ ListItem {
             //% "Delete configuration"
             text: qsTrId("mashka-delete-config")
             //% "Deleting configuration"
-            onClicked: Remorse.popupAction(page, qsTrId("mashka-deleting-config"), function() {
+            onClicked: remorseAction(qsTrId("mashka-deleting-config"), function() {
                 mmodel.clearData(name, MModel.ConfigData)
             })
         }
@@ -42,7 +42,7 @@ ListItem {
             //% "Delete cache"
             text: qsTrId("mashka-delete-cache")
             //% "Deleting cache"
-            onClicked: Remorse.popupAction(page, qsTrId("mashka-deleting-cache"), function() {
+            onClicked: remorseAction(qsTrId("mashka-deleting-cache"), function() {
                 mmodel.clearData(name, MModel.CacheData)
             })
         }
@@ -53,7 +53,7 @@ ListItem {
             //% "Delete local data"
             text: qsTrId("mashka-delete-localdata")
             //% "Deleting local data"
-            onClicked: Remorse.popupAction(page, qsTrId("mashka-deleting-localdata"), function() {
+            onClicked: remorseAction(qsTrId("mashka-deleting-localdata"), function() {
                 mmodel.clearData(name, MModel.LocalData)
             })
         }
