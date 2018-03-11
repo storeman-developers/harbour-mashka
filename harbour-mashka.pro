@@ -62,4 +62,7 @@ CONFIG += \
 
 TRANSLATIONS += \
     translations/harbour-mashka.ts \
-    translations/harbour-mashka-ru.ts
+    translations/harbour-mashka-es.ts \
+    translations/harbour-mashka-hu.ts \
+    translations/harbour-mashka-ru.ts \
+    translations/harbour-mashka-sv.ts
