@@ -70,7 +70,7 @@
     </message>
     <message id="mashka-found">
         <location filename="../qml/pages/EntriesPage.qml" line="32"/>
-        <location filename="../qml/pages/MainPage.qml" line="86"/>
+        <location filename="../qml/pages/MainPage.qml" line="91"/>
         <source>Found</source>
         <translation>Найдено</translation>
     </message>
@@ -141,15 +141,15 @@
     </message>
     <message id="mashka-of-data">
         <location filename="../qml/pages/EntriesPage.qml" line="33"/>
-        <location filename="../qml/pages/MainPage.qml" line="88"/>
-        <location filename="../qml/pages/MainPage.qml" line="97"/>
-        <location filename="../qml/pages/MainPage.qml" line="106"/>
+        <location filename="../qml/pages/MainPage.qml" line="93"/>
+        <location filename="../qml/pages/MainPage.qml" line="102"/>
+        <location filename="../qml/pages/MainPage.qml" line="111"/>
         <source>%1 of data</source>
         <translation>%1 данных</translation>
     </message>
     <message id="mashka-of-apps" numerus="yes">
         <location filename="../qml/pages/EntriesPage.qml" line="34"/>
-        <location filename="../qml/pages/MainPage.qml" line="90"/>
+        <location filename="../qml/pages/MainPage.qml" line="95"/>
         <source>of %n application(s)</source>
         <translation>
             <numerusform>%n приложения</numerusform>
@@ -162,13 +162,19 @@
         <source>Swipe to see details</source>
         <translation>Потяните, чтобы просмотреть детали</translation>
     </message>
+    <message id="mashka-settings">
+        <location filename="../qml/pages/MainPage.qml" line="61"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="20"/>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
     <message id="mashka-unused">
-        <location filename="../qml/pages/MainPage.qml" line="96"/>
+        <location filename="../qml/pages/MainPage.qml" line="101"/>
         <source>Unused</source>
         <translation>Не используется</translation>
     </message>
     <message id="mashka-of-removed-apps" numerus="yes">
-        <location filename="../qml/pages/MainPage.qml" line="99"/>
+        <location filename="../qml/pages/MainPage.qml" line="104"/>
         <source>of %n removed application(s)</source>
         <translation>
             <numerusform>%n удаленного приложения</numerusform>
@@ -177,17 +183,17 @@
         </translation>
     </message>
     <message id="mashka-total-cleared">
-        <location filename="../qml/pages/MainPage.qml" line="105"/>
+        <location filename="../qml/pages/MainPage.qml" line="110"/>
         <source>Total cleared</source>
         <translation>Всего очищено</translation>
     </message>
     <message id="mashka-clear">
-        <location filename="../qml/pages/MainPage.qml" line="126"/>
+        <location filename="../qml/pages/MainPage.qml" line="131"/>
         <source>Clear unused data</source>
         <translation>Удалить неиспользуемые данные</translation>
     </message>
     <message id="mashka-placeholder">
-        <location filename="../qml/pages/MainPage.qml" line="136"/>
+        <location filename="../qml/pages/MainPage.qml" line="141"/>
         <source>No unused data was found</source>
         <translation>Неиспользуемые данные не найдены</translation>
     </message>
@@ -242,6 +248,42 @@
         <location filename="../qml/pages/AboutPage.qml" line="84"/>
         <source>Donate with %1</source>
         <translation>Поддержать через %1</translation>
+    </message>
+    <message id="mashka-counters">
+        <location filename="../qml/pages/SettingsPage.qml" line="25"/>
+        <source>Counters</source>
+        <translation>Счетчики</translation>
+    </message>
+    <message id="mashka-resetting">
+        <location filename="../qml/pages/SettingsPage.qml" line="34"/>
+        <source>Resetting</source>
+        <translation>Сброс</translation>
+    </message>
+    <message id="mashka-reset-counter">
+        <location filename="../qml/pages/SettingsPage.qml" line="32"/>
+        <source>Reset the counter of deleted data</source>
+        <translation>Сбросить счетчик удаленных данных</translation>
+    </message>
+    <message id="mashka-advanced">
+        <location filename="../qml/pages/SettingsPage.qml" line="42"/>
+        <source>Advanced</source>
+        <extracomment>A section name of the settings page</extracomment>
+        <translation>Расширенные</translation>
+    </message>
+    <message id="mashka-show-enabled">
+        <location filename="../qml/pages/SettingsPage.qml" line="49"/>
+        <source>Enable advanced options</source>
+        <translation>Включить расширенные настройки</translation>
+    </message>
+    <message id="mashka-allow-delete-all">
+        <location filename="../qml/pages/SettingsPage.qml" line="60"/>
+        <source>Allow delete all data for installed applications</source>
+        <translation>Разрешить удаление всех данных для установленных приложений</translation>
+    </message>
+    <message id="mashka-allow-delete-all-note">
+        <location filename="../qml/pages/SettingsPage.qml" line="62"/>
+        <source>By default only cache can be deleted</source>
+        <translation>По умолчанию можно удалять только кэш</translation>
     </message>
 </context>
 </TS>
