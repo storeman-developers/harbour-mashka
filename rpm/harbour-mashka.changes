@@ -1,3 +1,11 @@
+* Sun Mar 11 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.0.3-1
+- Update data size formatting
+- Add settings page
+- Add an action to reset the counter of deleted data
+- Add an option to allow to delete all data for installed applications
+- ConfirmationDialog.qml: fix the TextSwitch opacity animation
+- EntryDelegate.qml: use remorseAction() instead of Remorse.popupAction()
+
 * Sat Mar 10 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.0.2-1
 - Add a simple icon
 - Fix main page layout
