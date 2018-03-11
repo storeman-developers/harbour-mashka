@@ -53,7 +53,7 @@ Dialog {
 
             TextSwitch {
                 id: switch2
-                visible: opacity === 1.0
+                visible: opacity > 0.0
                 opacity: switch1.checked ? 1.0 : 0.0
                 //% "I completely understand the risks"
                 text: qsTrId("mashka-understand2")
