@@ -44,7 +44,6 @@ DISTFILES += \
     qml/components/ListMenuItem.qml \
     icons/harbour-mashka.svg \
     rpm/harbour-mashka.changes \
-    rpm/harbour-mashka.spec \
     rpm/harbour-mashka.yaml \
     translations/*.ts \
     .tx/config \
