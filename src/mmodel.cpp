@@ -24,8 +24,13 @@ qint64 dirSize(const QString &path)
 MModel::MModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_busy(false)
-    , m_unused(0)
-    , m_unused_size(0)
+    , m_unused_apps_count(0)
+    , m_total_cache_size(0)
+    , m_total_config_size(0)
+    , m_total_localdata_size(0)
+    , m_unused_config_size(0)
+    , m_unused_cache_size(0)
+    , m_unused_localdata_size(0)
 {
     QTimer::singleShot(500, this, &MModel::reset);
 }
@@ -35,19 +40,39 @@ bool MModel::busy() const
     return m_busy;
 }
 
-qint64 MModel::totalDataSize() const
+qint64 MModel::totalConfigSize() const
 {
-    return m_total_size;
+    return m_total_config_size;
 }
 
-int MModel::totalUnused() const
+qint64 MModel::totalCacheSize() const
 {
-    return m_unused;
+    return m_total_cache_size;
 }
 
-qint64 MModel::totalUnusedSize() const
+qint64 MModel::totalLocaldataSize() const
 {
-    return m_unused_size;
+    return m_total_localdata_size;
+}
+
+int MModel::unusedAppsCount() const
+{
+    return m_unused_apps_count;
+}
+
+qint64 MModel::unusedConfigSize() const
+{
+    return m_unused_config_size;
+}
+
+qint64 MModel::unusedCacheSize() const
+{
+    return m_unused_cache_size;
+}
+
+qint64 MModel::unusedLocaldataSize() const
+{
+    return m_unused_localdata_size;
 }
 
 void MModel::reset()
@@ -55,21 +80,82 @@ void MModel::reset()
     QtConcurrent::run(this, &MModel::resetImpl);
 }
 
-void MModel::clearData(const QString &name, const DataType &type)
+void MModel::clearData(const QString &name, DataTypes types)
 {
-    QtConcurrent::run(this, &MModel::clearDataImpl, name, type);
+    QtConcurrent::run(this, &MModel::clearDataImpl, name, types);
 }
 
-void MModel::clearUnusedData()
+void MModel::clearUnusedData(DataTypes types)
 {
-    QtConcurrent::run(this, &MModel::clearUnusedDataImpl);
+    QtConcurrent::run(this, &MModel::clearUnusedDataImpl, types);
+}
+
+void MModel::setBusy(bool busy)
+{
+    m_busy = busy;
+    emit this->busyChanged();
+}
+
+qint64 MModel::removeDir(const QString &path)
+{
+    auto size = dirSize(path);
+#ifndef SAFE_MODE
+    if (QDir(path).removeRecursively())
+    {
+        qDebug("Removed %lld bytes '%s'", size, qUtf8Printable(path));
+        return size;
+    }
+    qWarning("Error removing '%s'", qUtf8Printable(path));
+    emit this->error(path);
+    return 0;
+#else
+    qDebug("SAFE MODE: Removed %lld bytes '%s'", size, qUtf8Printable(path));
+    return size;
+#endif
+}
+
+QVector<int> MModel::clearEntry(MEntry &entry, qint64 &cleared, DataTypes types)
+{
+    QVector<int> changed;
+
+    if (types.testFlag(ConfigData) && entry.config_size > 0)
+    {
+        auto c = removeDir(entry.config_path);
+        if (c > 0)
+        {
+            entry.config_size = 0;
+            cleared += c;
+            changed << ConfigSizeRole;
+        }
+    }
+    if (types.testFlag(CacheData) && entry.cache_size > 0)
+    {
+        auto c = removeDir(entry.cache_path);
+        if (c > 0)
+        {
+            entry.cache_size = 0;
+            cleared += c;
+            changed << CacheSizeRole;
+        }
+    }
+    if (types.testFlag(LocalData) && entry.data_size > 0)
+    {
+        auto c = removeDir(entry.data_path);
+        if (c > 0)
+        {
+            entry.data_size = 0;
+            cleared += c;
+            changed << LocalDataSizeRole;
+        }
+    }
+
+    return changed;
 }
 
 void MModel::resetImpl()
 {
+    this->setBusy(true);
     this->beginResetModel();
-    m_busy = true;
-    emit this->busyChanged();
 
     m_names.clear();
     m_entries.clear();
@@ -86,7 +172,8 @@ void MModel::resetImpl()
         QDirIterator it(app_paths[i], filters, QDir::Dirs | QDir::NoDotAndDotDot);
         while (it.hasNext())
         {
-            auto size = dirSize(it.next());
+            auto dirpath = it.next();
+            auto size = dirSize(dirpath);
             auto dirname = it.fileName();
             if (!m_entries.contains(dirname))
             {
@@ -96,12 +183,15 @@ void MModel::resetImpl()
             switch (i)
             {
             case 0:
+                e.config_path = dirpath;
                 e.config_size = size;
                 break;
             case 1:
+                e.cache_path = dirpath;
                 e.cache_size = size;
                 break;
             case 2:
+                e.data_path = dirpath;
                 e.data_size = size;
                 break;
             default:
@@ -136,160 +226,108 @@ void MModel::resetImpl()
     }
 
     this->endResetModel();
-    m_busy = false;
-    emit this->busyChanged();
     this->calculateTotal();
+    this->setBusy(false);
 }
 
-void MModel::clearDataImpl(const QString &name, const MModel::DataType &type)
+void MModel::clearDataImpl(const QString &name, DataTypes types)
 {
     if (!m_entries.contains(name))
     {
         qWarning("Model doesn't contain the '%s' entry", qUtf8Printable(name));
         return;
     }
-    m_busy = true;
-    emit this->busyChanged();
-
-    QList<QStandardPaths::StandardLocation> locations;
-    if (type == AllData || type == ConfigData)
-    {
-        locations << QStandardPaths::GenericConfigLocation;
-    }
-    if (type == AllData || type == CacheData)
-    {
-        locations << QStandardPaths::GenericCacheLocation;
-    }
-    if (type == AllData || type == LocalData)
-    {
-        locations << QStandardPaths::GenericDataLocation;
-    }
+    this->setBusy(true);
 
     qint64 cleared = 0;
     auto &e = m_entries[name];
-    QVector<int> changed;
-    for (const auto &location : locations)
+    auto changed = clearEntry(e, cleared, types);
+    int row = m_names.indexOf(name);
+
+    if (e.config_size + e.cache_size + e.data_size == 0)
     {
-        auto dirpath = QStandardPaths::locate(location, name, QStandardPaths::LocateDirectory);
-        if (dirpath.isEmpty())
-        {
-            continue;
-        }
-        auto size = dirSize(dirpath);
-        if (QDir(dirpath).removeRecursively())
-        {
-            qDebug("Removed %lld bytes '%s'", size, qUtf8Printable(dirpath));
-            cleared += size;
-            switch (location)
-            {
-            case QStandardPaths::GenericConfigLocation:
-                e.config_size = 0;
-                changed << ConfigSizeRole;
-                break;
-            case QStandardPaths::GenericCacheLocation:
-                e.cache_size = 0;
-                changed << CacheSizeRole;
-                break;
-            case QStandardPaths::GenericDataLocation:
-                e.data_size = 0;
-                changed << LocalDataSizeRole;
-                break;
-            default:
-                Q_UNREACHABLE();
-            }
-        }
-        else
-        {
-            qWarning("Error removing '%s'", qUtf8Printable(dirpath));
-            emit this->error(dirpath);
-        }
+        this->beginRemoveRows(QModelIndex(), row, row);
+        m_names.removeOne(name);
+        m_entries.remove(name);
+        this->endRemoveRows();
+    }
+    else
+    {
+        auto ind = this->createIndex(row, 0);
+        this->dataChanged(ind, ind, changed);
     }
 
-    if (!changed.isEmpty())
+    if (cleared > 0)
     {
+        this->calculateTotal();
+        emit this->cleared(cleared);
+    }
+    this->setBusy(false);
+}
+
+void MModel::clearUnusedDataImpl(DataTypes types)
+{
+    this->setBusy(true);
+
+    qint64 cleared = 0;
+    auto it = m_entries.begin();
+    while (it != m_entries.end())
+    {
+        auto &e = it.value();
+        if (e.installed)
+        {
+            ++it;
+            continue;
+        }
+
+        auto changed = this->clearEntry(e, cleared, types);
+        auto &name = it.key();
         int row = m_names.indexOf(name);
+
         if (e.config_size + e.cache_size + e.data_size == 0)
         {
             this->beginRemoveRows(QModelIndex(), row, row);
             m_names.removeOne(name);
-            m_entries.remove(name);
+            it = m_entries.erase(it);
             this->endRemoveRows();
         }
         else
         {
             auto ind = this->createIndex(row, 0);
             this->dataChanged(ind, ind, changed);
+            ++it;
         }
     }
-
-    m_busy = false;
-    emit this->busyChanged();
-    this->calculateTotal();
-    if (cleared > 0)
-    {
-        emit this->cleared(cleared);
-    }
-}
-
-void MModel::clearUnusedDataImpl()
-{
-    m_busy = true;
-    emit this->busyChanged();
-
-    qint64 cleared = 0;
-    for (auto it = m_entries.cbegin(); it != m_entries.cend(); ++it)
-    {
-        auto &entry = it.value();
-        if (entry.installed)
-        {
-            continue;
-        }
-        auto &name = it.key();
-        QStringList dirpaths = {
-            QStandardPaths::locate(QStandardPaths::GenericConfigLocation, name, QStandardPaths::LocateDirectory),
-            QStandardPaths::locate(QStandardPaths::GenericCacheLocation, name, QStandardPaths::LocateDirectory),
-            QStandardPaths::locate(QStandardPaths::GenericDataLocation, name, QStandardPaths::LocateDirectory)
-        };
-        for (const auto &dirpath : dirpaths)
-        {
-            if (!dirpath.isEmpty())
-            {
-                auto size = dirSize(dirpath);
-                if (QDir(dirpath).removeRecursively())
-                {
-                    qDebug("Removed %lld bytes '%s'", size, qUtf8Printable(dirpath));
-                    cleared += size;
-                }
-                else
-                {
-                    qWarning("Error removing '%s'", qUtf8Printable(dirpath));
-                    emit this->error(dirpath);
-                }
-            }
-        }
-    }
-
-    this->resetImpl();
 
     if (cleared > 0)
     {
+        this->calculateTotal();
         emit this->cleared(cleared);
     }
+
+    this->setBusy(false);
 }
 
 void MModel::calculateTotal()
 {
-    m_unused = 0;
-    m_total_size = 0;
-    m_unused_size = 0;
+    m_unused_apps_count = 0;
+    m_total_localdata_size = 0;
+    m_total_cache_size = 0;
+    m_total_config_size = 0;
+    m_unused_config_size = 0;
+    m_unused_cache_size = 0;
+    m_unused_localdata_size = 0;
     for (const auto &e : m_entries)
     {
-        auto s = e.config_size + e.cache_size + e.data_size;
-        m_total_size += s;
+        m_total_localdata_size += e.config_size;
+        m_total_cache_size     += e.cache_size;
+        m_total_config_size    += e.data_size;
         if (!e.installed)
         {
-            ++m_unused;
-            m_unused_size += s;
+            ++m_unused_apps_count;
+            m_unused_config_size    += e.config_size;
+            m_unused_cache_size     += e.cache_size;
+            m_unused_localdata_size += e.data_size;
         }
     }
     emit this->totalChanged();

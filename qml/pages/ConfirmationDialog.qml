@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.mashka 1.0
 
 
 Dialog {
@@ -9,7 +10,7 @@ Dialog {
 
     onStatusChanged: {
         if (status === DialogStatus.Closed && result === DialogResult.Accepted) {
-            mmodel.clearUnusedData()
+            mmodel.clearUnusedData(MModel.AllData)
         }
     }
 

@@ -30,8 +30,12 @@ Page {
 
         header: PageHeader {
             title: qsTrId("mashka-found")
-            description: qsTrId("mashka-of-data").arg(prettyBytes(mmodel.totalDataSize)) + " " +
-                         qsTrId("mashka-of-apps", mmodel.totalApps)
+            description:
+                //% "%1 of data"
+                qsTrId("mashka-of-data").arg(prettyBytes(
+                    mmodel.totalConfigSize + mmodel.totalCacheSize + mmodel.totalLocaldataSize)) + " " +
+                //% "of %n application(s)"
+                qsTrId("mashka-of-apps", mmodel.totalAppsCount)
         }
 
         section {

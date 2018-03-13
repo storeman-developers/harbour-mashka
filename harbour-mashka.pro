@@ -25,6 +25,9 @@ write_file($$$$OUT_PWD/mashka_version.h, VERSION_H)
 
 CONFIG(release, debug|release): DEFINES += QT_NO_DEBUG_OUTPUT
 
+# If safe_mode is set then Mashka wouldn't really remove files
+CONFIG(safe_mode): DEFINES += SAFE_MODE
+
 DISTFILES += \
     qml/harbour-mashka.qml \
     qml/cover/CoverPage.qml \

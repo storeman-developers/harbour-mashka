@@ -19,6 +19,9 @@ struct MEntry
     qint64 data_size;
     QString title;
     QString icon;
+    QString config_path;
+    QString cache_path;
+    QString data_path;
 };
 
 #endif // MENTRY_H

@@ -47,7 +47,9 @@ Page {
     SilicaFlickable {
         id: flicable
         anchors.fill: parent
-        contentHeight: page.height
+        contentHeight: Math.max(
+            page.height,
+            header.height + grid.height + clearedItem.height + buttonLoader.height)
 
         PullDownMenu {
             id: menu
@@ -69,11 +71,13 @@ Page {
 
         PageHeader {
             id: header
+            visible: orientation === Orientation.Portrait
+            height: visible ? _preferredHeight : Theme.paddingLarge
             title: "Mashka"
         }
 
         Grid {
-            id: content
+            id: grid
             visible: !mmodel.busy
             anchors {
                 top: header.bottom
@@ -82,44 +86,69 @@ Page {
                 right: parent.right
                 rightMargin: Theme.horizontalPageMargin
             }
-            spacing: Theme.paddingLarge
-            columns: page.isPortrait ?
-                         1 : (1 + (mashka.totalClearedSize > 0) * 1 + (mmodel.totalUnused > 0) * 1)
+            spacing: Theme.paddingMedium
+            columns: page.isPortrait ? 1 : (1 + (mmodel.unusedAppsCount > 0) * 1)
 
             DataLabel {
                 //% "Found"
                 title: qsTrId("mashka-found")
-                //% "%1 of data"
-                dataSizeText: qsTrId("mashka-of-data").arg(prettyBytes(mmodel.totalDataSize))
-                //% "of %n application(s)"
-                appsCountText: qsTrId("mashka-of-apps", mmodel.totalApps)
+                appsCount: mmodel.totalAppsCount
+                configSize: mmodel.totalConfigSize
+                cacheSize: mmodel.totalCacheSize
+                localDataSize: mmodel.totalLocaldataSize
             }
 
             DataLabel {
-                visible: mmodel.totalUnused > 0
                 //% "Unused"
                 title: qsTrId("mashka-unused")
-                dataSizeText: qsTrId("mashka-of-data").arg(prettyBytes(mmodel.totalUnusedSize))
-                //% "of %n removed application(s)"
-                appsCountText: qsTrId("mashka-of-removed-apps", mmodel.totalUnused)
+                appsCount: mmodel.unusedAppsCount
+                configSize: mmodel.unusedConfigSize
+                cacheSize: mmodel.unusedCacheSize
+                localDataSize: mmodel.unusedLocaldataSize
+            }
+        }
+
+        Item {
+            id: clearedItem
+            anchors {
+                top: grid.bottom
+                topMargin: Theme.paddingMedium
+            }
+            opacity: mashka.totalClearedSize > 0 ? 1.0 : 0.0
+            visible: opacity === 1.0
+            width: parent.width
+            height: clearedLabel.height + clearedDetailItem.height
+
+            Behavior on opacity { FadeAnimation { } }
+
+            Label {
+                id: clearedLabel
+                width: parent.width
+                horizontalAlignment: Qt.AlignHCenter
+                font.pixelSize: Theme.fontSizeLarge
+                color: Theme.highlightColor
+                wrapMode: Text.WordWrap
+                //% "Cleared"
+                text: qsTrId("mashka-total-cleared")
             }
 
-            DataLabel {
-                visible: mashka.totalClearedSize > 0
-                //% "Total cleared"
-                title: qsTrId("mashka-total-cleared")
-                dataSizeText: qsTrId("mashka-of-data").arg(prettyBytes(mashka.totalClearedSize))
+            DetailItem {
+                id: clearedDetailItem
+                anchors.top: clearedLabel.bottom
+                label: qsTrId("mashka-total")
+                value: prettyBytes(mashka.totalClearedSize)
             }
         }
 
         Loader {
+            id: buttonLoader
             visible: !mmodel.busy
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.bottom
                 bottomMargin: Theme.paddingLarge
             }
-            sourceComponent: mmodel.totalUnused ? buttonComponent : placeholderComponent
+            sourceComponent: mmodel.unusedAppsCount ? buttonComponent : placeholderComponent
         }
     }
 
