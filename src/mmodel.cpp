@@ -7,8 +7,6 @@
 #include <QSettings>
 #include <QFileInfo>
 
-#include <QDebug>
-
 
 qint64 dirSize(const QString &path)
 {
@@ -311,10 +309,6 @@ QVariant MModel::data(const QModelIndex &index, int role) const
 
     auto &name  = m_names[index.row()];
     auto &entry = m_entries[name];
-    if (name == "harbour-tooter")
-    {
-        qDebug("%lld %lld %lld", entry.config_size, entry.cache_size, entry.data_size);
-    }
     switch (role)
     {
     case NameRole:
