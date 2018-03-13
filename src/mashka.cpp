@@ -85,8 +85,24 @@ void Mashka::setAdvancedOptionsEnabled(bool value)
         emit this->advancedOptionsEnabledChanged();
         if (!value)
         {
+            this->setProcessConfigEnabled(false);
             this->setDeleteAllDataAllowed(false);
         }
+    }
+}
+
+bool Mashka::processConfigEnabled() const
+{
+    return m_settings->value(QStringLiteral("ProcessConfigEnabled")).toBool();
+}
+
+void Mashka::setProcessConfigEnabled(bool value)
+{
+    QString key(QStringLiteral("ProcessConfigEnabled"));
+    if (m_settings->value(key).toBool() != value)
+    {
+        m_settings->setValue(key, value);
+        emit this->processConfigEnabledChanged();
     }
 }
 

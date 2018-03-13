@@ -52,6 +52,31 @@ Page {
             }
 
             TextSwitch {
+                id: processConfigSwitch
+                visible: opacity > 0.0
+                opacity: advancedSwitch.checked ? 1.0 : 0.0
+                checked: mashka.processConfigEnabled
+                //% "Process configuration files"
+                text: qsTrId("mashka-allow-process-config")
+                //% "By default only cache and local data are processed"
+                description: qsTrId("mashka-allow-process-config-note")
+
+                onCheckedChanged: mashka.processConfigEnabled = checked
+
+                Behavior on opacity { FadeAnimation { } }
+
+                // A workaround as not all the signals are emitted
+                Connections {
+                    target: mashka
+                    onDeleteAllDataAllowedChanged: {
+                        if (processConfigSwitch.checked !== mashka.processConfigEnabled) {
+                            processConfigSwitch.checked = mashka.processConfigEnabled
+                        }
+                    }
+                }
+            }
+
+            TextSwitch {
                 id: allowDeleteSwitch
                 visible: opacity > 0.0
                 opacity: advancedSwitch.checked ? 1.0 : 0.0

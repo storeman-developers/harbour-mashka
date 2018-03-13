@@ -10,6 +10,7 @@ class Mashka : public QObject
     Q_OBJECT
     Q_PROPERTY(qint64 totalClearedSize READ totalClearedSize NOTIFY totalClearedSizeChanged)
     Q_PROPERTY(bool advancedOptionsEnabled READ advancedOptionsEnabled WRITE setAdvancedOptionsEnabled NOTIFY advancedOptionsEnabledChanged)
+    Q_PROPERTY(bool processConfigEnabled READ processConfigEnabled WRITE setProcessConfigEnabled NOTIFY processConfigEnabledChanged)
     Q_PROPERTY(bool deleteAllDataAllowed READ deleteAllDataAllowed WRITE setDeleteAllDataAllowed NOTIFY deleteAllDataAllowedChanged)
 
 public:
@@ -34,12 +35,16 @@ public:
     bool advancedOptionsEnabled() const;
     void setAdvancedOptionsEnabled(bool value);
 
+    bool processConfigEnabled() const;
+    void setProcessConfigEnabled(bool value);
+
     bool deleteAllDataAllowed() const;
     void setDeleteAllDataAllowed(bool value);
 
 signals:
     void totalClearedSizeChanged();
     void advancedOptionsEnabledChanged();
+    void processConfigEnabledChanged();
     void deleteAllDataAllowedChanged();
 
 public slots:

@@ -36,7 +36,7 @@ Column {
     DetailItem {
         rightMargin: 0.0
         leftMargin: 0.0
-        visible: configSize > 0
+        visible: mashka.processConfigEnabled && configSize > 0
         label: qsTrId("mashka-config")
         value: prettyBytes(configSize)
     }

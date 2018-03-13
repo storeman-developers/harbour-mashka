@@ -21,13 +21,16 @@ ListItem {
             text: qsTrId("mashka-delete-all")
             //% "Deleting all data"
             onClicked: remorseAction(qsTrId("mashka-deleting-alldata"), function() {
-                mmodel.clearData(name, MModel.AllData)
+                mmodel.clearData(name, mashka.processConfigEnabled ?
+                                     MModel.AllData :
+                                     MModel.CacheData | MModel.LocalData)
             })
         }
 
         MenuItem {
             id: deleteConfigItem
-            visible: (!installed || mashka.deleteAllDataAllowed) && configSize > 0
+            visible: mashka.processConfigEnabled &&
+                     (!installed || mashka.deleteAllDataAllowed) && configSize > 0
             //% "Delete configuration"
             text: qsTrId("mashka-delete-config")
             //% "Deleting configuration"
@@ -88,6 +91,7 @@ ListItem {
         }
 
         SizeLabel {
+            visible: mashka.processConfigEnabled
             //% "Configuration"
             label: qsTrId("mashka-config")
             value: configSize
