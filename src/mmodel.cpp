@@ -24,6 +24,7 @@ qint64 dirSize(const QString &path)
 MModel::MModel(QObject *parent)
     : QAbstractListModel(parent)
     , m_busy(false)
+    , m_resetting(false)
     , m_unused_apps_count(0)
     , m_total_cache_size(0)
     , m_total_config_size(0)
@@ -38,6 +39,11 @@ MModel::MModel(QObject *parent)
 bool MModel::busy() const
 {
     return m_busy;
+}
+
+bool MModel::resetting() const
+{
+    return m_resetting;
 }
 
 qint64 MModel::totalConfigSize() const
@@ -156,6 +162,8 @@ void MModel::resetImpl()
 {
     this->setBusy(true);
     this->beginResetModel();
+    m_resetting = true;
+    emit this->resettingChanged();
 
     m_names.clear();
     m_entries.clear();
@@ -228,6 +236,8 @@ void MModel::resetImpl()
     this->endResetModel();
     this->calculateTotal();
     this->setBusy(false);
+    m_resetting = false;
+    emit this->resettingChanged();
 }
 
 void MModel::clearDataImpl(const QString &name, DataTypes types)

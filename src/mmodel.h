@@ -10,6 +10,7 @@ class MModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
+    Q_PROPERTY(bool resetting READ resetting NOTIFY resettingChanged)
     Q_PROPERTY(int totalAppsCount READ rowCount NOTIFY totalChanged)
     Q_PROPERTY(qint64 totalConfigSize READ totalConfigSize NOTIFY totalChanged)
     Q_PROPERTY(qint64 totalCacheSize READ totalCacheSize NOTIFY totalChanged)
@@ -47,6 +48,7 @@ public:
     explicit MModel(QObject *parent = nullptr);
 
     bool busy() const;
+    bool resetting() const;
 
     qint64 totalConfigSize() const;
     qint64 totalCacheSize() const;
@@ -59,6 +61,7 @@ public:
 
 signals:
     void busyChanged();
+    void resettingChanged();
     void totalChanged();
     void cleared(const qint64 &size);
     void error(const QString &path);
@@ -70,6 +73,7 @@ public slots:
 
 private:
     bool m_busy;
+    bool m_resetting;
     int m_unused_apps_count;
     qint64 m_total_cache_size;
     qint64 m_total_config_size;

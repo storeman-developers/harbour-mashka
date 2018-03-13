@@ -41,11 +41,12 @@ Page {
     BusyIndicator {
         size: BusyIndicatorSize.Large
         anchors.centerIn: parent
-        running: mmodel.busy
+        running: mmodel.resetting
     }
 
     SilicaFlickable {
         id: flicable
+        visible: !mmodel.resetting
         anchors.fill: parent
         contentHeight: Math.max(
             page.height,
@@ -53,6 +54,7 @@ Page {
 
         PullDownMenu {
             id: menu
+            busy: mmodel.busy
 
             MenuItem {
                 text: qsTrId("mashka-about")
@@ -78,7 +80,6 @@ Page {
 
         Grid {
             id: grid
-            visible: !mmodel.busy
             anchors {
                 top: header.bottom
                 left: parent.left
@@ -142,7 +143,6 @@ Page {
 
         Loader {
             id: buttonLoader
-            visible: !mmodel.busy
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 bottom: parent.bottom

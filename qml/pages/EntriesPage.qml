@@ -11,13 +11,13 @@ Page {
     BusyIndicator {
         size: BusyIndicatorSize.Large
         anchors.centerIn: parent
-        running: mmodel.busy
+        running: mmodel.resetting
     }
 
     SilicaListView {
         id: listView
         anchors.fill: parent
-        visible: !mmodel.busy
+        visible: !mmodel.resetting
 
         model: MProxyModel {
             id: proxyModel
@@ -53,6 +53,7 @@ Page {
 
         PullDownMenu {
             id: menu
+            busy: mmodel.busy
 
             RescanMenuEntry { }
         }
