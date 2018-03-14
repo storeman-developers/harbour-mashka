@@ -4,7 +4,7 @@ import harbour.mashka 1.0
 import "../components"
 
 
-Page {    
+Page {
 
     function _updateUi() {
         if (status === PageStatus.Active) {
