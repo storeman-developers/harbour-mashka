@@ -11,6 +11,8 @@ ListItem {
                             deleteCacheItem.visible || deleteLocalDataItem.visible
 
     menu: ContextMenu {
+        // This took about 3 hours of my life
+        x: 0
 
         MenuItem {
             id: deleteAllItem

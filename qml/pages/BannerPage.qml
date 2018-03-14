@@ -5,7 +5,6 @@ import "../components"
 
 Page {
     id: page
-    allowedOrientations: Orientation.All
 
     Label {
         anchors {
@@ -32,8 +31,8 @@ Page {
             bottomMargin: Theme.paddingLarge
         }
         width: parent.width
-        columns: orientation === Orientation.Portrait ? 1 : 3
-        rows: orientation === Orientation.Portrait ? 3 : 1
+        columns: isPortrait ? 1 : 3
+        rows: isPortrait ? 3 : 1
 
         PlainButton {
             text: "PayPal"

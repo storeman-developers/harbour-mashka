@@ -6,7 +6,7 @@ MouseArea {
     property alias text: label.text
 
     height: Theme.itemSizeSmall
-    width: orientation === Orientation.Portrait ? Screen.width : Screen.height / 3
+    width: isPortrait ? Screen.width : Screen.height / 3
 
     Label {
         id: label

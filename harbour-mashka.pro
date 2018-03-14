@@ -37,6 +37,8 @@ DISTFILES += \
     qml/pages/ConfirmationDialog.qml \
     qml/pages/AboutPage.qml \
     qml/pages/SettingsPage.qml \
+    qml/components/CleanerDashboard.qml \
+    qml/components/CleanerEntries.qml \
     qml/components/RescanMenuEntry.qml \
     qml/components/DataLabel.qml \
     qml/components/PlainButton.qml \

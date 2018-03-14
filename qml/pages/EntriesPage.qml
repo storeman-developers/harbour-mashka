@@ -6,7 +6,12 @@ import "../components"
 
 Page {
     id: page
-    allowedOrientations: Orientation.All
+
+    onOrientationTransitionRunningChanged: {
+        if (!orientationTransitionRunning && isLandscape) {
+            pageStack.navigateBack(PageStackAction.Immediate)
+        }
+    }
 
     BusyIndicator {
         size: BusyIndicatorSize.Large
@@ -14,50 +19,7 @@ Page {
         running: mmodel.resetting
     }
 
-    SilicaListView {
-        id: listView
+    CleanerEntries {
         anchors.fill: parent
-        visible: !mmodel.resetting
-
-        model: MProxyModel {
-            id: proxyModel
-            sortRole: MModel.SortRole
-            sortCaseSensitivity: Qt.CaseInsensitive
-            sourceModel: mmodel
-        }
-
-        onCountChanged: proxyModel.sort(Qt.AscendingOrder)
-
-        header: PageHeader {
-            title: qsTrId("mashka-found")
-            description:
-                //% "%1 of data"
-                qsTrId("mashka-of-data").arg(prettyBytes(
-                    mmodel.totalConfigSize + mmodel.totalCacheSize + mmodel.totalLocaldataSize)) + " " +
-                //% "of %n application(s)"
-                qsTrId("mashka-of-apps", mmodel.totalAppsCount)
-        }
-
-        section {
-            property: "installed"
-            delegate: SectionHeader {
-                text: section === "true" ?
-                          //% "Installed"
-                          qsTrId("mashka-installed") :
-                          //% "Uninstalled"
-                          qsTrId("mashka-uninstalled")
-            }
-        }
-
-        delegate: EntryDelegate { }
-
-        PullDownMenu {
-            id: menu
-            busy: mmodel.busy
-
-            RescanMenuEntry { }
-        }
-
-        VerticalScrollDecorator { }
     }
 }

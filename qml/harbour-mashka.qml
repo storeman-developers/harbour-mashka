@@ -32,9 +32,9 @@ ApplicationWindow {
     }
 
     initialPage: mashka.showBanner() ? Qt.resolvedUrl("pages/BannerPage.qml") :
-                                      Qt.resolvedUrl("pages/MainPage.qml")
+                                       Qt.resolvedUrl("pages/CleanerPage.qml")
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
-    allowedOrientations: defaultAllowedOrientations
+    _defaultPageOrientations: Orientation.All
 
     Notification {
 

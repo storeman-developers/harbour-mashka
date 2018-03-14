@@ -5,7 +5,6 @@ import harbour.mashka 1.0
 
 Dialog {
     id: dialog
-    allowedOrientations: Orientation.All
     canAccept: switch2.checked
 
     onStatusChanged: {

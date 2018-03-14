@@ -11,8 +11,7 @@ Column {
 
     opacity: appsCount > 0 ? 1.0 : 0.0
     visible: opacity === 1.0
-    width: page.orientation === Orientation.Portrait ?
-               parent.width : (parent.width - Theme.horizontalPageMargin * 2) / content.columns
+    width: parent.width
 
     Behavior on opacity { FadeAnimation { } }
 
