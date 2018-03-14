@@ -104,9 +104,21 @@ void MModel::setBusy(bool busy)
 
 qint64 MModel::removeDir(const QString &path)
 {
+    if (path.isEmpty())
+    {
+        qCritical("Provided path is empty");
+        return 0;
+    }
+    QDir dir(path);
+    if (!dir.exists())
+    {
+        qCritical("Provided path '%s' is not a directory");
+        return 0;
+    }
+
     auto size = dirSize(path);
 #ifndef SAFE_MODE
-    if (QDir(path).removeRecursively())
+    if (dir.removeRecursively())
     {
         qDebug("Deleted %lld bytes '%s'", size, qUtf8Printable(path));
         return size;
