@@ -1,3 +1,17 @@
+* Thu Mar 15 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.0.5-1
+- Refactoring
+- Disable processing of configuration files by default
+- Add option to enable processing of configuration files
+- Don't show entries with only configuration files if processing of these files is disabled
+- Set pulldown menus busy when model is busy
+- Use busy indicator only when model is resetting
+- Add 2 pane layout for landscape orientation and large screens
+- Use word "delete" instead of "clear"
+- Add mechanism for registering known applications with non standard paths (read more at https://github.com/mentaljam/harbour-mashka/tree/master/known_apps)
+- Fix layout of list view after first scanning
+- Add Portuguese (Brazil)
+- Update other translations
+
 * Sun Mar 11 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.0.4-1
 - Add tranlsations for Hungarian, Spanish and Swedish
 
