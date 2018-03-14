@@ -19,9 +19,9 @@ Page {
         wrapMode: Text.WordWrap
         //% "<h3>Ahoy sailor!</h3><br />"
         //% "<p>You're using the application for some time and have already "
-        //% "cleared more than %1 of unused data.</p><br />"
+        //% "deleted more than %1 of unused data.</p><br />"
         //% "<p>Please consider to make a small donation to support the developer ;)</p>"
-        text: qsTrId("mashka-banner").arg(prettyBytes(mashka.totalClearedSize))
+        text: qsTrId("mashka-banner").arg(prettyBytes(mashka.totalDeletedData))
     }
 
     Grid {

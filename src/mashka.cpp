@@ -14,6 +14,12 @@ Mashka::Mashka(QObject *parent)
     {
         m_settings->setValue(key, current + 1);
     }
+    QString oldkey(QStringLiteral("TotalCleared"));
+    if (m_settings->contains(oldkey))
+    {
+        m_settings->setValue(QStringLiteral("TotalDeleted"), m_settings->value(oldkey));
+        m_settings->remove(oldkey);
+    }
 }
 
 bool Mashka::showBanner() const
@@ -23,11 +29,11 @@ bool Mashka::showBanner() const
         return false;
     }
 
-    auto cleared  = this->totalClearedSize();
+    auto deleted  = this->totalDeletedData();
     auto launches = m_settings->value(QStringLiteral("Launches"), 0).toUInt();
 
     // 52428800 == 50 MB
-    return cleared > 52428800 && launches >= 10;
+    return deleted > 52428800 && launches >= 10;
 }
 
 void Mashka::setBannerShowed()
@@ -51,24 +57,24 @@ void Mashka::setHintShowed(const Hint &hint)
     m_settings->setValue(QStringLiteral("Hints/").append(name), true);
 }
 
-qint64 Mashka::totalClearedSize() const
+qint64 Mashka::totalDeletedData() const
 {
-    return m_settings->value(QStringLiteral("TotalCleared"), 0).toLongLong();
+    return m_settings->value(QStringLiteral("TotalDeleted"), 0).toLongLong();
 }
 
-void Mashka::addClearedSize(const qint64 &size)
+void Mashka::addDeletedData(const qint64 &size)
 {
-    QString key(QStringLiteral("TotalCleared"));
+    QString key(QStringLiteral("TotalDeleted"));
     auto current = m_settings->value(key, 0).toLongLong();
     m_settings->setValue(key, current + size);
-    emit this->totalClearedSizeChanged();
+    emit this->totalDeletedDataChanged();
 }
 
-void Mashka::resetClearedSize()
+void Mashka::resetDeletedData()
 {
-    qDebug("Resetting TotalCleared value");
-    m_settings->remove(QStringLiteral("TotalCleared"));
-    emit this->totalClearedSizeChanged();
+    qDebug("Resetting TotalDeleted value");
+    m_settings->remove(QStringLiteral("TotalDeleted"));
+    emit this->totalDeletedDataChanged();
 }
 
 bool Mashka::advancedOptionsEnabled() const

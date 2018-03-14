@@ -65,17 +65,17 @@ ApplicationWindow {
     MModel {
         id: mmodel
 
-        onCleared: {
-            mashka.addClearedSize(size)
-            //% "Cleared %1"
-            notification.show(qsTrId("mashka-notification-cleared").arg(prettyBytes(size)))
+        onDataDeleted:  {
+            mashka.addDeletedData(size)
+            //% "Deleted %1"
+            notification.show(qsTrId("mashka-notification-deleted").arg(prettyBytes(size)))
         }
 
-        onError: {
+        onDeletionError: {
             notification.showPopup(
                         //% "An error occured!"
                         qsTrId("mashka-notification-error-title"),
-                        //% "Error removing &quot;%1&quot;."
+                        //% "Error deleting &quot;%1&quot;."
                         qsTrId("mashka-notification-error-body").arg(prettyBytes(path)),
                         "image://theme/icon-lock-warning")
         }

@@ -9,7 +9,7 @@ Dialog {
 
     onStatusChanged: {
         if (status === DialogStatus.Closed && result === DialogResult.Accepted) {
-            mmodel.clearUnusedData(mashka.processConfigEnabled ?
+            mmodel.deleteUnusedData(mashka.processConfigEnabled ?
                                        MModel.AllData :
                                        MModel.CacheData | MModel.LocalData)
         }

@@ -50,7 +50,7 @@ Page {
                 wrapMode: Text.WordWrap
                 horizontalAlignment: Qt.AlignHCenter
                 //% "<p>Mashka is the slang name of the mop for deck washing used by Russian sailors.</p>"
-                //% "<p>Mashka searches for and cleares unused data leaved after removed Sailfish&nbsp;OS applications.</p>"
+                //% "<p>Mashka searches for and deleted unused data leaved after removed Sailfish&nbsp;OS applications.</p>"
                 text: qsTrId("mashka-app-description") + "<br />" +
                       //% "<p>This is an open source software which is distributed "
                       //% "under the terms of the<br /><a href='%1'>MIT License</a>.</p>"

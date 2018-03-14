@@ -25,13 +25,13 @@ Page {
             }
 
             ListMenuItem {
-                enabled: mashka.totalClearedSize > 0
+                enabled: mashka.totalDeletedData > 0
                 iconSource: "image://theme/icon-m-delete"
                 //% "Reset the counter of deleted data"
                 text: qsTrId("mashka-reset-counter")
                 //% "Resetting"
                 onClicked: remorseAction(qsTrId("mashka-resetting"), function() {
-                    mashka.resetClearedSize()
+                    mashka.resetDeletedData()
                 })
             }
 

@@ -8,7 +8,7 @@ class QSettings;
 class Mashka : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(qint64 totalClearedSize READ totalClearedSize NOTIFY totalClearedSizeChanged)
+    Q_PROPERTY(qint64 totalDeletedData READ totalDeletedData NOTIFY totalDeletedDataChanged)
     Q_PROPERTY(bool advancedOptionsEnabled READ advancedOptionsEnabled WRITE setAdvancedOptionsEnabled NOTIFY advancedOptionsEnabledChanged)
     Q_PROPERTY(bool processConfigEnabled READ processConfigEnabled WRITE setProcessConfigEnabled NOTIFY processConfigEnabledChanged)
     Q_PROPERTY(bool deleteAllDataAllowed READ deleteAllDataAllowed WRITE setDeleteAllDataAllowed NOTIFY deleteAllDataAllowedChanged)
@@ -28,9 +28,9 @@ public:
     Q_INVOKABLE bool showHint(const Hint &hint) const;
     Q_INVOKABLE void setHintShowed(const Hint &hint);
 
-    qint64 totalClearedSize() const;
-    Q_INVOKABLE void addClearedSize(const qint64 &size);
-    Q_INVOKABLE void resetClearedSize();
+    qint64 totalDeletedData() const;
+    Q_INVOKABLE void addDeletedData(const qint64 &size);
+    Q_INVOKABLE void resetDeletedData();
 
     bool advancedOptionsEnabled() const;
     void setAdvancedOptionsEnabled(bool value);
@@ -42,7 +42,7 @@ public:
     void setDeleteAllDataAllowed(bool value);
 
 signals:
-    void totalClearedSizeChanged();
+    void totalDeletedDataChanged();
     void advancedOptionsEnabledChanged();
     void processConfigEnabledChanged();
     void deleteAllDataAllowedChanged();

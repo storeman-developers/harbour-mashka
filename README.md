@@ -1,6 +1,6 @@
 # Mashka
 
-Search for and clear unused data leaved after removed Sailfish OS applications.
+Search for and delete unused data leaved after removed Sailfish OS applications.
 
 ## Translations
 

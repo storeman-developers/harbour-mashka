@@ -63,13 +63,13 @@ signals:
     void busyChanged();
     void resettingChanged();
     void totalChanged();
-    void cleared(const qint64 &size);
-    void error(const QString &path);
+    void dataDeleted(const qint64 &size);
+    void deletionError(const QString &path);
 
 public slots:
     void reset();
-    void clearData(const QString &name, DataTypes types);
-    void clearUnusedData(DataTypes types);
+    void deleteData(const QString &name, DataTypes types);
+    void deleteUnusedData(DataTypes types);
 
 private:
     bool m_busy;
@@ -86,10 +86,10 @@ private:
 
     void setBusy(bool busy);
     qint64 removeDir(const QString &path);    
-    QVector<int> clearEntry(MEntry &entry, qint64 &cleared, DataTypes types);
+    QVector<int> clearEntry(MEntry &entry, qint64 &deleted, DataTypes types);
     void resetImpl();
-    void clearDataImpl(const QString &name, DataTypes types);
-    void clearUnusedDataImpl(DataTypes types);
+    void deleteDataImpl(const QString &name, DataTypes types);
+    void deleteUnusedDataImpl(DataTypes types);
     void calculateTotal();
 
     // QAbstractItemModel interface

@@ -8,7 +8,7 @@ License: MIT
 Sources:
   - '%{name}-%{version}.tar.bz2'
 Description: |
-  Search for and clear unused data leaved after removed Sailfish OS applications.
+  Search for and delete unused data leaved after removed Sailfish OS applications.
 Configure: none
 Builder: qtc5
 

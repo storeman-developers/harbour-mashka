@@ -23,8 +23,8 @@ SilicaFlickable {
 
         MenuItem {
             enabled: mmodel.unusedAppsCount
-            //% "Clear unused data"
-            text: qsTrId("mashka-clear")
+            //% "Delete unused data"
+            text: qsTrId("mashka-delete")
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/ConfirmationDialog.qml"))
         }
 
@@ -71,30 +71,29 @@ SilicaFlickable {
         }
 
         Item {
-            id: clearedItem
-            opacity: mashka.totalClearedSize > 0 ? 1.0 : 0.0
+            opacity: mashka.totalDeletedData > 0 ? 1.0 : 0.0
             visible: opacity === 1.0
             width: parent.width
-            height: clearedLabel.height + clearedDetailItem.height
+            height: deletedLabel.height + deletedDetailItem.height
 
             Behavior on opacity { FadeAnimation { } }
 
             Label {
-                id: clearedLabel
+                id: deletedLabel
                 width: parent.width
                 horizontalAlignment: Qt.AlignHCenter
                 font.pixelSize: Theme.fontSizeLarge
                 color: Theme.highlightColor
                 wrapMode: Text.WordWrap
-                //% "Cleared"
-                text: qsTrId("mashka-total-cleared")
+                //% "Deleted"
+                text: qsTrId("mashka-total-deleted")
             }
 
             DetailItem {
-                id: clearedDetailItem
-                anchors.top: clearedLabel.bottom
+                id: deletedDetailItem
+                anchors.top: deletedLabel.bottom
                 label: qsTrId("mashka-total")
-                value: prettyBytes(mashka.totalClearedSize)
+                value: prettyBytes(mashka.totalDeletedData)
             }
         }
     }

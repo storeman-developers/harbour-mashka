@@ -86,14 +86,14 @@ void MModel::reset()
     QtConcurrent::run(this, &MModel::resetImpl);
 }
 
-void MModel::clearData(const QString &name, DataTypes types)
+void MModel::deleteData(const QString &name, DataTypes types)
 {
-    QtConcurrent::run(this, &MModel::clearDataImpl, name, types);
+    QtConcurrent::run(this, &MModel::deleteDataImpl, name, types);
 }
 
-void MModel::clearUnusedData(DataTypes types)
+void MModel::deleteUnusedData(DataTypes types)
 {
-    QtConcurrent::run(this, &MModel::clearUnusedDataImpl, types);
+    QtConcurrent::run(this, &MModel::deleteUnusedDataImpl, types);
 }
 
 void MModel::setBusy(bool busy)
@@ -108,19 +108,19 @@ qint64 MModel::removeDir(const QString &path)
 #ifndef SAFE_MODE
     if (QDir(path).removeRecursively())
     {
-        qDebug("Removed %lld bytes '%s'", size, qUtf8Printable(path));
+        qDebug("Deleted %lld bytes '%s'", size, qUtf8Printable(path));
         return size;
     }
-    qWarning("Error removing '%s'", qUtf8Printable(path));
-    emit this->error(path);
+    qWarning("Error deleting '%s'", qUtf8Printable(path));
+    emit this->deletionError(path);
     return 0;
 #else
-    qDebug("SAFE MODE: Removed %lld bytes '%s'", size, qUtf8Printable(path));
+    qDebug("SAFE MODE: Deleted %lld bytes '%s'", size, qUtf8Printable(path));
     return size;
 #endif
 }
 
-QVector<int> MModel::clearEntry(MEntry &entry, qint64 &cleared, DataTypes types)
+QVector<int> MModel::clearEntry(MEntry &entry, qint64 &deleted, DataTypes types)
 {
     QVector<int> changed;
 
@@ -130,7 +130,7 @@ QVector<int> MModel::clearEntry(MEntry &entry, qint64 &cleared, DataTypes types)
         if (c > 0)
         {
             entry.config_size = 0;
-            cleared += c;
+            deleted += c;
             changed << ConfigSizeRole;
         }
     }
@@ -140,7 +140,7 @@ QVector<int> MModel::clearEntry(MEntry &entry, qint64 &cleared, DataTypes types)
         if (c > 0)
         {
             entry.cache_size = 0;
-            cleared += c;
+            deleted += c;
             changed << CacheSizeRole;
         }
     }
@@ -150,7 +150,7 @@ QVector<int> MModel::clearEntry(MEntry &entry, qint64 &cleared, DataTypes types)
         if (c > 0)
         {
             entry.data_size = 0;
-            cleared += c;
+            deleted += c;
             changed << LocalDataSizeRole;
         }
     }
@@ -240,7 +240,7 @@ void MModel::resetImpl()
     emit this->resettingChanged();
 }
 
-void MModel::clearDataImpl(const QString &name, DataTypes types)
+void MModel::deleteDataImpl(const QString &name, DataTypes types)
 {
     if (!m_entries.contains(name))
     {
@@ -249,9 +249,9 @@ void MModel::clearDataImpl(const QString &name, DataTypes types)
     }
     this->setBusy(true);
 
-    qint64 cleared = 0;
+    qint64 deleted = 0;
     auto &e = m_entries[name];
-    auto changed = clearEntry(e, cleared, types);
+    auto changed = clearEntry(e, deleted, types);
     int row = m_names.indexOf(name);
 
     if (e.config_size + e.cache_size + e.data_size == 0)
@@ -267,19 +267,19 @@ void MModel::clearDataImpl(const QString &name, DataTypes types)
         this->dataChanged(ind, ind, changed);
     }
 
-    if (cleared > 0)
+    if (deleted > 0)
     {
         this->calculateTotal();
-        emit this->cleared(cleared);
+        emit this->dataDeleted(deleted);
     }
     this->setBusy(false);
 }
 
-void MModel::clearUnusedDataImpl(DataTypes types)
+void MModel::deleteUnusedDataImpl(DataTypes types)
 {
     this->setBusy(true);
 
-    qint64 cleared = 0;
+    qint64 deleted = 0;
     auto it = m_entries.begin();
     while (it != m_entries.end())
     {
@@ -290,7 +290,7 @@ void MModel::clearUnusedDataImpl(DataTypes types)
             continue;
         }
 
-        auto changed = this->clearEntry(e, cleared, types);
+        auto changed = this->clearEntry(e, deleted, types);
         auto &name = it.key();
         int row = m_names.indexOf(name);
 
@@ -309,10 +309,10 @@ void MModel::clearUnusedDataImpl(DataTypes types)
         }
     }
 
-    if (cleared > 0)
+    if (deleted > 0)
     {
         this->calculateTotal();
-        emit this->cleared(cleared);
+        emit this->dataDeleted(deleted);
     }
 
     this->setBusy(false);
