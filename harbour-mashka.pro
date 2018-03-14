@@ -1,3 +1,5 @@
+include(known_apps/known_apps.pri)
+
 TARGET = harbour-mashka
 
 CONFIG += sailfishapp

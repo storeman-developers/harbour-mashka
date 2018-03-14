@@ -1,4 +1,5 @@
 #include "mmodel.h"
+#include <mknown_apps.hpp>
 
 #include <QTimer>
 #include <QtConcurrentRun>
@@ -8,16 +9,36 @@
 #include <QFileInfo>
 
 
-qint64 dirSize(const QString &path)
+qint64 getSize(const QString &path)
 {
     qint64 res = 0;
-    QDirIterator it(path, QDir::Files | QDir::Hidden, QDirIterator::Subdirectories);
-    while (it.hasNext())
+    QFileInfo info(path);
+    if (info.isDir())
     {
-        it.next();
-        res += it.fileInfo().size();
+        QDirIterator it(path, QDir::Files | QDir::Hidden, QDirIterator::Subdirectories);
+        while (it.hasNext())
+        {
+            it.next();
+            res += it.fileInfo().size();
+        }
+    }
+    else if (info.isFile())
+    {
+        res += info.size();
     }
     return res;
+}
+
+void processKnownPaths(QStringList &paths, qint64 &size, const QStringList &known_paths)
+{
+    for (const auto &p : known_paths)
+    {
+        if (QFileInfo(p).exists())
+        {
+            paths << p;
+            size = getSize(p);
+        }
+    }
 }
 
 
@@ -102,34 +123,44 @@ void MModel::setBusy(bool busy)
     emit this->busyChanged();
 }
 
-qint64 MModel::removeDir(const QString &path)
+qint64 MModel::removePaths(const QStringList &paths)
 {
-    if (path.isEmpty())
+    for (const auto &p : paths)
     {
-        qCritical("Provided path is empty");
-        return 0;
-    }
-    QDir dir(path);
-    if (!dir.exists())
-    {
-        qCritical("Provided path '%s' is not a directory");
-        return 0;
+        if (p.isEmpty())
+        {
+            qCritical("One of provided paths is empty");
+            return 0;
+        }
     }
 
-    auto size = dirSize(path);
-#ifndef SAFE_MODE
-    if (dir.removeRecursively())
+    qint64 res = 0;
+    for (const auto &p : paths)
     {
-        qDebug("Deleted %lld bytes '%s'", size, qUtf8Printable(path));
-        return size;
-    }
-    qWarning("Error deleting '%s'", qUtf8Printable(path));
-    emit this->deletionError(path);
-    return 0;
+        auto size = getSize(p);
+
+#ifndef SAFE_MODE
+        QFileInfo info(p);
+        bool ok = info.isDir()  ? QDir(p).removeRecursively() :
+                  info.isFile() ? QFile::remove(p)            : false;
+
+        if (ok)
+        {
+            qDebug("Deleted %lld bytes '%s'", size, qUtf8Printable(p));
+            res += size;
+        }
+        else
+        {
+            qWarning("Error deleting '%s'", qUtf8Printable(p));
+            emit this->deletionError(p);
+        }
 #else
-    qDebug("SAFE MODE: Deleted %lld bytes '%s'", size, qUtf8Printable(path));
-    return size;
+        qDebug("SAFE MODE: Deleted %lld bytes '%s'", size, qUtf8Printable(p));
+        res += size;
 #endif
+    }
+
+    return res;
 }
 
 QVector<int> MModel::clearEntry(MEntry &entry, qint64 &deleted, DataTypes types)
@@ -138,7 +169,7 @@ QVector<int> MModel::clearEntry(MEntry &entry, qint64 &deleted, DataTypes types)
 
     if (types.testFlag(ConfigData) && entry.config_size > 0)
     {
-        auto c = removeDir(entry.config_path);
+        auto c = removePaths(entry.config_paths);
         if (c > 0)
         {
             entry.config_size = 0;
@@ -148,7 +179,7 @@ QVector<int> MModel::clearEntry(MEntry &entry, qint64 &deleted, DataTypes types)
     }
     if (types.testFlag(CacheData) && entry.cache_size > 0)
     {
-        auto c = removeDir(entry.cache_path);
+        auto c = removePaths(entry.cache_paths);
         if (c > 0)
         {
             entry.cache_size = 0;
@@ -158,7 +189,7 @@ QVector<int> MModel::clearEntry(MEntry &entry, qint64 &deleted, DataTypes types)
     }
     if (types.testFlag(LocalData) && entry.data_size > 0)
     {
-        auto c = removeDir(entry.data_path);
+        auto c = removePaths(entry.data_paths);
         if (c > 0)
         {
             entry.data_size = 0;
@@ -180,7 +211,25 @@ void MModel::resetImpl()
     m_names.clear();
     m_entries.clear();
 
+    // Process known apps
+    for (const auto &app : knownApps())
+    {
+        MEntry e;
+        processKnownPaths(e.config_paths, e.config_size, app.config);
+        processKnownPaths(e.cache_paths, e.cache_size, app.cache);
+        processKnownPaths(e.data_paths, e.data_size, app.local_data);
+        if (e.exists())
+        {
+            qDebug("Found a known app '%s'", qUtf8Printable(app.name));
+            m_names << app.name;
+            m_entries.insert(app.name, e);
+        }
+    }
+
+    // Search for other apps
     QStringList filters(QStringLiteral("harbour-*"));
+    auto exclude = excludeDirs();
+    auto check_excludes = !exclude.pattern().isEmpty();
     QStringList app_paths = {
         QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation),
         QStandardPaths::writableLocation(QStandardPaths::GenericCacheLocation),
@@ -193,25 +242,31 @@ void MModel::resetImpl()
         while (it.hasNext())
         {
             auto dirpath = it.next();
-            auto size = dirSize(dirpath);
+            // Don't add paths of known apps
+            if (check_excludes && exclude.match(dirpath).hasMatch())
+            {
+                continue;
+            }
+            auto size = getSize(dirpath);
             auto dirname = it.fileName();
             if (!m_entries.contains(dirname))
             {
+                qDebug("Found a harbour app '%s'", qUtf8Printable(dirname));
                 m_names << dirname;
             }
             auto &e = m_entries[dirname];
             switch (i)
             {
             case 0:
-                e.config_path = dirpath;
+                e.config_paths << dirpath;
                 e.config_size = size;
                 break;
             case 1:
-                e.cache_path = dirpath;
+                e.cache_paths << dirpath;
                 e.cache_size = size;
                 break;
             case 2:
-                e.data_path = dirpath;
+                e.data_paths << dirpath;
                 e.data_size = size;
                 break;
             default:
@@ -266,7 +321,7 @@ void MModel::deleteDataImpl(const QString &name, DataTypes types)
     auto changed = clearEntry(e, deleted, types);
     int row = m_names.indexOf(name);
 
-    if (e.config_size + e.cache_size + e.data_size == 0)
+    if (!e.exists())
     {
         this->beginRemoveRows(QModelIndex(), row, row);
         m_names.removeOne(name);
@@ -306,7 +361,7 @@ void MModel::deleteUnusedDataImpl(DataTypes types)
         auto &name = it.key();
         int row = m_names.indexOf(name);
 
-        if (e.config_size + e.cache_size + e.data_size == 0)
+        if (!e.exists())
         {
             this->beginRemoveRows(QModelIndex(), row, row);
             m_names.removeOne(name);

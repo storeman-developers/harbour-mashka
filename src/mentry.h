@@ -2,7 +2,7 @@
 #define MENTRY_H
 
 
-#include <QtGlobal>
+#include <QStringList>
 
 struct MEntry
 {
@@ -13,15 +13,18 @@ struct MEntry
         , data_size(0)
     {}
 
+    inline bool exists()
+    { return config_size + cache_size + data_size > 0;}
+
     bool installed;
     qint64 config_size;
     qint64 cache_size;
     qint64 data_size;
     QString title;
     QString icon;
-    QString config_path;
-    QString cache_path;
-    QString data_path;
+    QStringList config_paths;
+    QStringList cache_paths;
+    QStringList data_paths;
 };
 
 #endif // MENTRY_H

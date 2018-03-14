@@ -87,7 +87,7 @@ private:
     QMap<QString, MEntry> m_entries;
 
     void setBusy(bool busy);
-    qint64 removeDir(const QString &path);    
+    qint64 removePaths(const QStringList &paths);
     QVector<int> clearEntry(MEntry &entry, qint64 &deleted, DataTypes types);
     void resetImpl();
     void deleteDataImpl(const QString &name, DataTypes types);
