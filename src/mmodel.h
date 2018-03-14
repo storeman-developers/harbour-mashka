@@ -8,6 +8,8 @@
 
 class MModel : public QAbstractListModel
 {
+    friend class MProxyModel;
+
     Q_OBJECT
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
     Q_PROPERTY(bool resetting READ resetting NOTIFY resettingChanged)

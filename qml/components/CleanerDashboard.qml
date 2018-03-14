@@ -22,7 +22,10 @@ SilicaFlickable {
         }
 
         MenuItem {
-            enabled: mmodel.unusedAppsCount
+            id: deleteUnusedItem
+            enabled: mashka.processConfigEnabled ? mmodel.unusedAppsCount > 0 :
+                                                   mmodel.unusedCacheSize + mmodel.unusedLocaldataSize > 0
+
             //% "Delete unused data"
             text: qsTrId("mashka-delete")
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/ConfirmationDialog.qml"))
@@ -62,6 +65,7 @@ SilicaFlickable {
         }
 
         DataLabel {
+            opacity: deleteUnusedItem.enabled ? 1.0 : 0.0
             //% "Unused"
             title: qsTrId("mashka-unused")
             appsCount: mmodel.unusedAppsCount

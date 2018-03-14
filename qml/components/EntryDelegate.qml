@@ -4,6 +4,7 @@ import harbour.mashka 1.0
 
 
 ListItem {
+
     id: delegate
     width: parent.width
     contentHeight: content.height + Theme.paddingMedium * 2

@@ -12,6 +12,8 @@ SilicaListView {
         sortRole: MModel.SortRole
         sortCaseSensitivity: Qt.CaseInsensitive
         sourceModel: mmodel
+        processConfig: mashka.processConfigEnabled
+        onSourceModelChanged: sort(Qt.AscendingOrder)
     }
 
     onCountChanged: proxyModel.sort(Qt.AscendingOrder)
