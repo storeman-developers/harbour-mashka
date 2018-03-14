@@ -17,7 +17,7 @@
     <message id="mashka-cover-could-be-deleted">
         <location filename="../qml/cover/CoverPage.qml" line="15"/>
         <source>%1 could be deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Pueden borrarse %1</translation>
     </message>
     <message id="mashka-bytes" numerus="yes">
         <location filename="../qml/harbour-mashka.qml" line="19"/>
@@ -45,7 +45,7 @@
     <message id="mashka-notification-deleted">
         <location filename="../qml/harbour-mashka.qml" line="71"/>
         <source>Deleted %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 borrados</translation>
     </message>
     <message id="mashka-notification-error-title">
         <location filename="../qml/harbour-mashka.qml" line="77"/>
@@ -55,14 +55,12 @@
     <message id="mashka-notification-error-body">
         <location filename="../qml/harbour-mashka.qml" line="79"/>
         <source>Error deleting &amp;quot;%1&amp;quot;.</source>
-        <oldsource>Error removing &amp;quot;%1&amp;quot;.</oldsource>
-        <translation type="unfinished">Error al borrar &amp;quot;%1&amp;quot;.</translation>
+        <translation>Error al borrar &amp;quot;%1&amp;quot;.</translation>
     </message>
     <message id="mashka-banner">
         <location filename="../qml/pages/BannerPage.qml" line="24"/>
         <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already deleted more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
-        <oldsource>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already cleared more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</oldsource>
-        <translation type="unfinished">&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Llevas un tiempo usando esta aplicación y has borrado más de %1 de datos sin usar.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Por favor, considera hacer una pequeña donación para apoyar al desarrollador ;)&lt;/p&gt;</translation>
+        <translation>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Llevas tiempo usando esta aplicación y ya has borrado más de %1 de datos sin usar.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Por favor, considera hacer una pequeña donación para apoyar al desarrollador ;)&lt;/p&gt;</translation>
     </message>
     <message id="mashka-not-show">
         <location filename="../qml/pages/BannerPage.qml" line="49"/>
@@ -88,7 +86,7 @@
     <message id="mashka-apps">
         <location filename="../qml/components/DataLabel.qml" line="31"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicaciones</translation>
     </message>
     <message id="mashka-config">
         <location filename="../qml/components/DataLabel.qml" line="39"/>
@@ -101,6 +99,12 @@
         <location filename="../qml/components/EntryDelegate.qml" line="105"/>
         <source>Cache</source>
         <translation>Caché</translation>
+    </message>
+    <message id="mashka-total">
+        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
+        <location filename="../qml/components/DataLabel.qml" line="66"/>
+        <source>Total</source>
+        <translation>Total</translation>
     </message>
     <message id="mashka-delete-config">
         <location filename="../qml/components/EntryDelegate.qml" line="38"/>
@@ -175,7 +179,7 @@
     <message id="mashka-delete">
         <location filename="../qml/components/CleanerDashboard.qml" line="30"/>
         <source>Delete unused data</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrar datos no usados</translation>
     </message>
     <message id="mashka-unused">
         <location filename="../qml/components/CleanerDashboard.qml" line="70"/>
@@ -185,13 +189,7 @@
     <message id="mashka-total-deleted">
         <location filename="../qml/components/CleanerDashboard.qml" line="93"/>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="mashka-total">
-        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
-        <location filename="../qml/components/DataLabel.qml" line="66"/>
-        <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrado</translation>
     </message>
     <message id="mashka-empty">
         <location filename="../qml/components/SizeLabel.qml" line="13"/>
@@ -222,8 +220,8 @@
     <message id="mashka-app-description">
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
-        <oldsource>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and cleares unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</oldsource>
-        <translation type="unfinished">&lt;p&gt;Mashka es la fregona que se usa para limpiar las cubiertas en el argot de los marineros rusos.&lt;/p&gt;&lt;p&gt;Mashka busca y limpia los datos no usados que se quedan en tu dispositivo después de desinstalar las aplicaciones de Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
+        <translation>
+&lt;p&gt;Mashka es la fregona que se usa para limpiar las cubiertas en el argot de los marineros rusos.&lt;/p&gt;&lt;p&gt;Mashka busca y borrar los datos sin usar que no se eliminan tras desinstalar las aplicaciones de Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-app-licensing">
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
@@ -259,7 +257,7 @@
     <message id="mashka-reset-counter">
         <location filename="../qml/pages/SettingsPage.qml" line="31"/>
         <source>Reset the counter of deleted data</source>
-        <translation>Reiniciar el contador de datos borrados</translation>
+        <translation>Reiniciar contador de datos borrados</translation>
     </message>
     <message id="mashka-advanced">
         <location filename="../qml/pages/SettingsPage.qml" line="41"/>
@@ -275,12 +273,12 @@
     <message id="mashka-allow-process-config">
         <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>Process configuration files</source>
-        <translation type="unfinished"></translation>
+        <translation>Procesar archivos de configuración</translation>
     </message>
     <message id="mashka-allow-process-config-note">
         <location filename="../qml/pages/SettingsPage.qml" line="61"/>
         <source>By default only cache and local data are processed</source>
-        <translation type="unfinished"></translation>
+        <translation>Por defecto sólo se procesan la caché y los datos locales</translation>
     </message>
     <message id="mashka-allow-delete-all">
         <location filename="../qml/pages/SettingsPage.qml" line="84"/>
