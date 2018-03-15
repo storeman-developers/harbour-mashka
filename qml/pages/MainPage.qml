@@ -10,7 +10,7 @@ Page {
         if (status === PageStatus.Active) {
             if (isPortrait) {
                 if (!canNavigateForward) {
-                    pageStack.pushAttached(Qt.resolvedUrl("CleanerAttachedPage.qml"))
+                    pageStack.pushAttached(Qt.resolvedUrl("EntriesPage.qml"))
                 }
             } else if (canNavigateForward) {
                 pageStack.popAttached()
