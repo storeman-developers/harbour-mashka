@@ -1,6 +1,8 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt_BR">
 <context>
-    <name/>
+    <name></name>
     <message id="mashka-rescan">
         <location filename="../qml/components/RescanMenuEntry.qml" line="8"/>
         <location filename="../qml/cover/CoverPage.qml" line="18"/>
@@ -20,7 +22,10 @@
     <message id="mashka-bytes" numerus="yes">
         <location filename="../qml/harbour-mashka.qml" line="19"/>
         <source>%n byte(s)</source>
-        <translation><numerusform>%n byte</numerusform><numerusform>%n bytes</numerusform></translation>
+        <translation>
+            <numerusform>%n byte</numerusform>
+            <numerusform>%n bytes</numerusform>
+        </translation>
     </message>
     <message id="mashka-kb">
         <location filename="../qml/harbour-mashka.qml" line="22"/>
@@ -63,18 +68,18 @@
         <translation>Não mostrar novamente</translation>
     </message>
     <message id="mashka-found">
-        <location filename="../qml/components/CleanerDashboard.qml" line="57"/>
-        <location filename="../qml/components/CleanerEntries.qml" line="22"/>
+        <location filename="../qml/components/CleanerDashboard.qml" line="60"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="24"/>
         <source>Found</source>
         <translation>Encontrado</translation>
     </message>
     <message id="mashka-installed">
-        <location filename="../qml/components/CleanerEntries.qml" line="36"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="38"/>
         <source>Installed</source>
         <translation>Instalado</translation>
     </message>
     <message id="mashka-uninstalled">
-        <location filename="../qml/components/CleanerEntries.qml" line="38"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="40"/>
         <source>Uninstalled</source>
         <translation>Desinstalado</translation>
     </message>
@@ -85,77 +90,80 @@
     </message>
     <message id="mashka-config">
         <location filename="../qml/components/DataLabel.qml" line="39"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="98"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="99"/>
         <source>Configuration</source>
         <translation>Configuração</translation>
     </message>
     <message id="mashka-cache">
         <location filename="../qml/components/DataLabel.qml" line="47"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="104"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="105"/>
         <source>Cache</source>
         <translation>Cache</translation>
     </message>
     <message id="mashka-total">
-        <location filename="../qml/components/CleanerDashboard.qml" line="95"/>
+        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
         <location filename="../qml/components/DataLabel.qml" line="66"/>
         <source>Total</source>
         <translation>Total</translation>
     </message>
     <message id="mashka-delete-config">
-        <location filename="../qml/components/EntryDelegate.qml" line="37"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="38"/>
         <source>Delete configuration</source>
         <translation>Apagar configuração</translation>
     </message>
     <message id="mashka-delete-all">
-        <location filename="../qml/components/EntryDelegate.qml" line="23"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="24"/>
         <source>Delete all data</source>
         <translation>Apagar todos os dados</translation>
     </message>
     <message id="mashka-deleting-alldata">
-        <location filename="../qml/components/EntryDelegate.qml" line="25"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="26"/>
         <source>Deleting all data</source>
         <translation>Apagando todos os dados</translation>
     </message>
     <message id="mashka-deleting-config">
-        <location filename="../qml/components/EntryDelegate.qml" line="39"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="40"/>
         <source>Deleting configuration</source>
         <translation>Apagando configuração</translation>
     </message>
     <message id="mashka-delete-cache">
-        <location filename="../qml/components/EntryDelegate.qml" line="48"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="49"/>
         <source>Delete cache</source>
         <translation>Apagar cache</translation>
     </message>
     <message id="mashka-deleting-cache">
-        <location filename="../qml/components/EntryDelegate.qml" line="50"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="51"/>
         <source>Deleting cache</source>
         <translation>Apagando cache</translation>
     </message>
     <message id="mashka-delete-localdata">
-        <location filename="../qml/components/EntryDelegate.qml" line="59"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="60"/>
         <source>Delete local data</source>
         <translation>Apagar dados locais</translation>
     </message>
     <message id="mashka-deleting-localdata">
-        <location filename="../qml/components/EntryDelegate.qml" line="61"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="62"/>
         <source>Deleting local data</source>
         <translation>Apagando dados locais</translation>
     </message>
     <message id="mashka-localdata">
         <location filename="../qml/components/DataLabel.qml" line="55"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="110"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="111"/>
         <source>Local data</source>
         <translation>Dados locais</translation>
     </message>
     <message id="mashka-of-data">
-        <location filename="../qml/components/CleanerEntries.qml" line="25"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="27"/>
         <source>%1 of data</source>
         <translation>%1  de dados</translation>
     </message>
     <message id="mashka-of-apps" numerus="yes">
-        <location filename="../qml/components/CleanerEntries.qml" line="28"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="30"/>
         <source>of %n application(s)</source>
-        <translation><numerusform>de %n aplicativo</numerusform><numerusform>de %n aplicativos</numerusform></translation>
+        <translation>
+            <numerusform>de %n aplicativo</numerusform>
+            <numerusform>de %n aplicativos</numerusform>
+        </translation>
     </message>
     <message id="mashka-hint-openentriespage">
         <location filename="../qml/pages/MainPage.qml" line="31"/>
@@ -169,17 +177,17 @@
         <translation>Configurações</translation>
     </message>
     <message id="mashka-delete">
-        <location filename="../qml/components/CleanerDashboard.qml" line="27"/>
+        <location filename="../qml/components/CleanerDashboard.qml" line="30"/>
         <source>Delete unused data</source>
         <translation>Remover dados desnecessários</translation>
     </message>
     <message id="mashka-unused">
-        <location filename="../qml/components/CleanerDashboard.qml" line="66"/>
+        <location filename="../qml/components/CleanerDashboard.qml" line="70"/>
         <source>Unused</source>
         <translation>Desnecessário</translation>
     </message>
     <message id="mashka-total-deleted">
-        <location filename="../qml/components/CleanerDashboard.qml" line="89"/>
+        <location filename="../qml/components/CleanerDashboard.qml" line="93"/>
         <source>Deleted</source>
         <translation>Removido</translation>
     </message>
