@@ -277,15 +277,15 @@ void MModel::resetImpl()
 
     QString name_key(QStringLiteral("Desktop Entry/Name"));
     QString icon_key(QStringLiteral("Desktop Entry/Icon"));
+    QString desktop_tmpl(QStringLiteral("%1/%2.desktop"));
     QString icon_tmpl(QStringLiteral("/usr/share/icons/hicolor/86x86/apps/%1.png"));
-    for (const auto &path : QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation))
+    auto desktop_paths = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
+    for (const auto &name : m_entries.keys())
     {
-        QDirIterator it(path, filters, QDir::Files);
-        while (it.hasNext())
+        for (const auto &path : desktop_paths)
         {
-            auto desktop_path = it.next();
-            auto name = it.fileInfo().completeBaseName();
-            if (m_entries.contains(name))
+            auto desktop_path = desktop_tmpl.arg(path, name);
+            if (QFileInfo(desktop_path).isFile())
             {
                 auto &e = m_entries[name];
                 e.installed = true;
@@ -296,6 +296,7 @@ void MModel::resetImpl()
                 {
                     e.icon = icon;
                 }
+                break;
             }
         }
     }
