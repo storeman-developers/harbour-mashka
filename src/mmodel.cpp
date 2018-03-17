@@ -36,7 +36,7 @@ void processKnownPaths(QStringList &paths, qint64 &size, const QStringList &know
         if (QFileInfo(p).exists())
         {
             paths << p;
-            size = getSize(p);
+            size += getSize(p);
         }
     }
 }
