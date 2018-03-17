@@ -278,7 +278,10 @@ void MModel::resetImpl()
     QString name_key(QStringLiteral("Desktop Entry/Name"));
     QString icon_key(QStringLiteral("Desktop Entry/Icon"));
     QString desktop_tmpl(QStringLiteral("%1/%2.desktop"));
-    QString icon_tmpl(QStringLiteral("/usr/share/icons/hicolor/86x86/apps/%1.png"));
+    QStringList icon_tmpls = {
+        QStringLiteral("/usr/share/icons/hicolor/86x86/apps/%1.png"),
+        QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.0/icons/%1.png")
+    };
     auto desktop_paths = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
     for (const auto &name : m_entries.keys())
     {
@@ -291,10 +294,15 @@ void MModel::resetImpl()
                 e.installed = true;
                 QSettings desktop(desktop_path, QSettings::IniFormat);
                 e.title = desktop.value(name_key).toString();
-                auto icon = icon_tmpl.arg(desktop.value(icon_key, name).toString());
-                if (QFileInfo(icon).isFile())
+                auto icon_name = desktop.value(icon_key, name).toString();
+                for (const auto &tmpl : icon_tmpls)
                 {
-                    e.icon = icon;
+                    auto icon = tmpl.arg(icon_name);
+                    if (QFileInfo(icon).isFile())
+                    {
+                        e.icon = icon;
+                        break;
+                    }
                 }
                 break;
             }
