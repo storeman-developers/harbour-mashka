@@ -1,3 +1,10 @@
+* Sat Mar 17 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.0.6-1
+- Better search for installed applications
+- Add search for icons of system applications
+- Fix calculation of data size of knows applications
+- Add sailfish-browser and jolla-email to known applications
+- Add Dutch and update other translations
+
 * Thu Mar 15 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.0.5-3
 - Update translations and fix pt_BR
 
