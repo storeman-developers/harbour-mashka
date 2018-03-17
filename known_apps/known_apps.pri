@@ -1,5 +1,6 @@
 KNOWN_APPS = \
-    $$PWD/filecase.ini
+    $$PWD/filecase.ini \
+    $$PWD/sailfish-browser.ini
 
 OTHER_FILES += \
     $$PWD/generator.py \
