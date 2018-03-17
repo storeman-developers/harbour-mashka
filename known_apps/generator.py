@@ -46,7 +46,7 @@ def main():
         config.read(path)
         for app in config.sections():
             if app in known_apps:
-                fatal('Duplicate "{}" entry: first occurrence was "{}" then "{}"'
+                fatal('Duplicate entry "{}": first occurrence was "{}" then "{}"'
                           .format(app, known_apps[app]['source'], path))
             app_dict = config[app]
             if not ('config' in app_dict or 'cache' in app_dict or 'local_data' in app_dict):
@@ -58,6 +58,7 @@ def main():
                 'cache': to_stringlist(app_dict.get('cache', fallback='')),
                 'local_data': to_stringlist(app_dict.get('local_data', fallback=''))
             }
+        config.clear()
 
     outfile = open(os.path.join(sys.argv[1], 'mknown_apps.hpp'), 'w')
     outfile.write('''\
