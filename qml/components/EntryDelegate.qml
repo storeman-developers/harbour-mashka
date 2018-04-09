@@ -72,6 +72,8 @@ ListItem {
             left: parent.left
             leftMargin: Theme.horizontalPageMargin
         }
+        width: Theme.iconSizeLauncher
+        height: width
         visible: icon
         source: icon
     }
