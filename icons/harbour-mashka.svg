@@ -1,114 +1,43 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="86"
-   height="86"
-   id="svg2"
-   version="1.1"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="harbour-mashka.svg"
-   inkscape:export-filename="C:\Users\Stephan\Desktop\double-shape.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
-  <defs
-     id="defs4">
-    <linearGradient
-       id="linearGradient3789-6">
-      <stop
-         style="stop-color:#1e9bff;stop-opacity:1;"
-         offset="0"
-         id="stop3791-0" />
-      <stop
-         style="stop-color:#00c8de;stop-opacity:1;"
-         offset="1"
-         id="stop3793-4" />
-    </linearGradient>
-    <linearGradient
-       gradientTransform="translate(0,4)"
-       y2="0"
-       x2="86"
-       y1="73"
-       x1="12"
-       gradientUnits="userSpaceOnUse"
-       id="linearGradient3830"
-       xlink:href="#linearGradient3789-6"
-       inkscape:collect="always" />
-  </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="-0.061984568"
-     inkscape:cy="-14.910466"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer2"
-     showgrid="true"
-     inkscape:window-width="1680"
-     inkscape:window-height="995"
-     inkscape:window-x="0"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
-     inkscape:snap-bbox="false"
-     inkscape:snap-global="true"
-     inkscape:snap-nodes="false"
-     inkscape:snap-others="false">
-    <inkscape:grid
-       type="xygrid"
-       id="grid2985"
-       empspacing="5"
-       visible="true"
-       enabled="true"
-       snapvisiblegridlinesonly="true" />
-  </sodipodi:namedview>
-  <metadata
-     id="metadata7">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Ebene"
-     style="display:inline"
-     transform="translate(0,-4)">
-    <path
-       inkscape:connector-curvature="0"
-       style="display:inline;fill:url(#linearGradient3830);fill-opacity:1"
-       id="path13"
-       d="m 85.699,5.723 c 0,-0.786 -0.637,-1.423 -1.423,-1.423 0,0 -40.641,0 -41.276,0 C 19.417,4.3 0.3,23.417 0.3,47 0.3,70.582 19.417,89.7 43,89.7 66.583,89.7 85.7,70.582 85.7,47 85.7,46.364 85.699,5.723 85.699,5.723 Z" />
-    <g
-       transform="matrix(0.11846151,0.1152254,-0.1152254,0.11846151,49.087445,-21.559511)"
-       id="g6">
-      <path
-         style="fill:#ffffff"
-         inkscape:connector-curvature="0"
-         d="m 214.795,324.599 h 103.709 c 7.184,0 13.566,-2.811 17.51,-7.714 3.554,-4.417 4.811,-10.042 3.541,-15.838 -2.538,-11.566 -14.5,-22.756 -27.232,-25.475 -0.236,-0.051 -1.544,-0.328 -3.616,-0.741 -1.772,-0.352 -6.803,-1.406 -6.803,-6.406 v -6.012 c 0,-8.332 -5.125,-15.485 -12.387,-18.485 -1.685,-0.696 -5.367,-1.878 -5.367,-5.503 V 17.5 c 0,-9.665 -7.835,-17.5 -17.5,-17.5 -9.665,0 -17.5,7.835 -17.5,17.5 v 220.925 c 0,3.125 -4.044,4.904 -5.875,5.72 -6.993,3.117 -11.88,10.131 -11.88,18.269 v 7.012 c 0,3.75 -4.096,4.877 -5.688,5.189 -2.715,0.53 -4.453,0.899 -4.73,0.959 -12.732,2.719 -24.694,13.908 -27.232,25.475 -1.271,5.795 -0.013,11.42 3.541,15.837 3.943,4.901 10.326,7.713 17.509,7.713 z"
-         id="path2" />
-      <path
-         style="fill:#ffffff"
-         inkscape:connector-curvature="0"
-         d="M 382.631,497.455 354.656,369.911 C 351.82,356.972 338.735,346.445 325.488,346.445 H 207.811 c -13.247,0 -26.332,10.526 -29.168,23.465 l -27.975,127.546 c -1.445,6.592 -0.16,13.147 3.619,18.458 3.778,5.31 9.551,8.673 16.252,9.468 2.726,0.323 67.083,7.915 95.97,7.918 h 0.022 c 0.002,0 -0.001,0 -0.001,0 28.972,0 93.495,-7.598 96.228,-7.921 6.701,-0.794 12.474,-4.155 16.253,-9.465 3.78,-5.311 5.066,-11.865 3.62,-18.459 z M 266.532,528.3 Z"
-         id="path4" />
-    </g>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 86 86" style="enable-background:new 0 0 86 86;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{display:none;}
+	.st2{clip-path:url(#SVGID_3_);fill:url(#SVGID_4_);}
+</style>
+<g id="Слой_1">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-462.3735" y1="549.6664" x2="-461.5248" y2="550.515" gradientTransform="matrix(85.4 0 0 -85.4 39499.4961 47014.6953)">
+		<stop  offset="0" style="stop-color:#151591"/>
+		<stop  offset="3.043478e-02" style="stop-color:#202079"/>
+		<stop  offset="1" style="stop-color:#638ED5"/>
+	</linearGradient>
+	<path class="st0" d="M85.7,1.7c0-0.8-0.6-1.4-1.4-1.4c0,0-40.6,0-41.3,0C19.4,0.3,0.3,19.4,0.3,43c0,23.6,19.1,42.7,42.7,42.7
+		S85.7,66.6,85.7,43C85.7,42.4,85.7,1.7,85.7,1.7z"/>
+</g>
+<g id="Слой_2" class="st1">
+</g>
+<g id="Слой_3">
+	<g>
+		<defs>
+			<path id="SVGID_2_" d="M85.7,1.7c0-0.8-0.6-1.4-1.4-1.4c0,0-40.6,0-41.3,0C19.4,0.3,0.3,19.4,0.3,43c0,23.6,19.1,42.7,42.7,42.7
+				S85.7,66.6,85.7,43C85.7,42.4,85.7,1.7,85.7,1.7z"/>
+		</defs>
+		<clipPath id="SVGID_3_">
+			<use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
+		</clipPath>
+		
+			<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-461.9327" y1="549.228" x2="-461.2256" y2="549.9351" gradientTransform="matrix(79.038 0 0 -79.0704 36533.3242 43490.6797)">
+			<stop  offset="0" style="stop-color:#FFFFFF"/>
+			<stop  offset="0.9913" style="stop-color:#D6E6FF"/>
+		</linearGradient>
+		<path class="st2" d="M55.2,41.9c0,0-0.1-0.2-0.3-0.5c-0.2-0.3-0.6-1,0.1-1.8l0.9-0.9c1.2-1.2,1.6-2.9,1.2-4.2
+			c-0.1-0.3-0.4-0.9,0.2-1.4L89.4,1c1.4-1.4,1.6-3.5,0.4-4.7c-1.2-1.2-3.2-1-4.7,0.4L53,28.9c-0.5,0.5-1.2,0.2-1.5,0.1
+			c-1.3-0.4-2.9,0-4.1,1.2l-1,1c-0.5,0.5-1.2,0.2-1.4,0.1c-0.4-0.3-0.7-0.4-0.7-0.4C39.4,28,31,33.5,30.7,33.8L13.3,44.9
+			c-1,0.6-1.7,1.4-1.8,2.7c-0.1,1.2,0.3,4.1,2.4,8.9c1.7,4,5.4,8.3,6.8,9.6c1.4,1.3,4.8,4.2,9,6.1c3.3,1.4,7.6,2.7,8.8,2.4
+			c1.1-0.3,2-0.8,2.7-1.8l12-18.7C53.4,53.8,58.4,46.2,55.2,41.9z"/>
+	</g>
+</g>
 </svg>
