@@ -209,7 +209,7 @@
     <message id="mashka-understand2">
         <location filename="../qml/pages/ConfirmationDialog.qml" line="61"/>
         <source>I completely understand the risks</source>
-        <translation>Jag förstår risken fulständigt</translation>
+        <translation>Jag förstår risken fullständigt</translation>
     </message>
     <message id="mashka-about">
         <location filename="../qml/components/CleanerDashboard.qml" line="15"/>

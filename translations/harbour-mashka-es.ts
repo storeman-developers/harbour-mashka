@@ -221,7 +221,7 @@
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
         <translation>
-&lt;p&gt;Mashka es la fregona que se usa para limpiar las cubiertas en el argot de los marineros rusos.&lt;/p&gt;&lt;p&gt;Mashka busca y borrar los datos sin usar que no se eliminan tras desinstalar las aplicaciones de Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
+&lt;p&gt;Mashka es la fregona que se usa para limpiar las cubiertas en el argot de los marineros rusos.&lt;/p&gt;&lt;p&gt;Mashka busca y borra los datos sin usar que no se eliminan tras desinstalar las aplicaciones de Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-app-licensing">
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
