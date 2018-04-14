@@ -18,6 +18,8 @@ The application tries to load translation files automatically basing on your sys
 
     LANG=ru harbour-mashka
 
-## Third-party
+## Acknowledgements
 
-The Cleaning Mop icon from [Flaticon](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+To [gregguh](https://github.com/gregguh) for the launcher icon.
+
+To the community for the translations and feedback.
