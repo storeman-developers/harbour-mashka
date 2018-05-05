@@ -1,3 +1,7 @@
+* Sun May  6 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.1.1-1
+- Add French
+- Update Dutch (Belgium)
+
 * Thu Apr 12 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.1.0-1
 - EntryDelegate.qml: make the icon size explicit
 - Update launcher icon
