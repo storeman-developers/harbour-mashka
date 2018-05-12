@@ -74,6 +74,7 @@ TRANSLATIONS += \
     translations/harbour-mashka-hu.ts \
     translations/harbour-mashka-nl_BE.ts \
     translations/harbour-mashka-nl.ts \
+    translations/harbour-mashka-pl.ts \
     translations/harbour-mashka-pt_BR.ts \
     translations/harbour-mashka-ru.ts \
     translations/harbour-mashka-sv.ts
