@@ -1,4 +1,5 @@
 KNOWN_APPS = \
+    $$PWD/depecher.ini \
     $$PWD/filecase.ini \
     $$PWD/jolla-email.ini \
     $$PWD/sailfish-browser.ini
