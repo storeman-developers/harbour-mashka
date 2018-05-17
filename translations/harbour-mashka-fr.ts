@@ -12,7 +12,7 @@
     <message id="mashka-working">
         <location filename="../qml/cover/CoverPage.qml" line="12"/>
         <source>Working...</source>
-        <translation>En cours de traitement...</translation>
+        <translation>Traitement en cours...</translation>
     </message>
     <message id="mashka-cover-could-be-deleted">
         <location filename="../qml/cover/CoverPage.qml" line="15"/>
@@ -60,7 +60,7 @@
     <message id="mashka-banner">
         <location filename="../qml/pages/BannerPage.qml" line="24"/>
         <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already deleted more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;Ohé matelot !&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Vous utilisez cette application depuis un petit moment maintenant, et vous avez déjà éliminé plus de %1 de données inutilisées.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Merci de penser à faire un don pour soutenir le développeur ! ;)&lt;/p&gt;</translation>
+        <translation>&lt;h3&gt;Ohé matelot !&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Vous utilisez cette application depuis un petit moment maintenant, et vous avez déjà éliminé plus de %1 de données grâce à elle.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Pourquoi ne pas faire un petit don pour soutenir le développeur ? ;)&lt;/p&gt;</translation>
     </message>
     <message id="mashka-not-show">
         <location filename="../qml/pages/BannerPage.qml" line="49"/>
@@ -71,12 +71,12 @@
         <location filename="../qml/components/CleanerDashboard.qml" line="60"/>
         <location filename="../qml/components/CleanerEntries.qml" line="24"/>
         <source>Found</source>
-        <translation>Résultats</translation>
+        <translation>Résultat</translation>
     </message>
     <message id="mashka-installed">
         <location filename="../qml/components/CleanerEntries.qml" line="38"/>
         <source>Installed</source>
-        <translation>Installé</translation>
+        <translation>Installées</translation>
     </message>
     <message id="mashka-uninstalled">
         <location filename="../qml/components/CleanerEntries.qml" line="40"/>
@@ -162,7 +162,7 @@
         <source>of %n application(s)</source>
         <translation>
             <numerusform>d’une application</numerusform>
-            <numerusform>de %n applications</numerusform>
+            <numerusform>pour %n applications</numerusform>
         </translation>
     </message>
     <message id="mashka-hint-openentriespage">
