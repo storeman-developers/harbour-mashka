@@ -7,6 +7,7 @@
 #include <QDirIterator>
 #include <QSettings>
 #include <QFileInfo>
+#include <QTextCodec>
 
 
 qint64 getSize(const QString &path)
@@ -39,6 +40,24 @@ void processKnownPaths(QStringList &paths, qint64 &size, const QStringList &know
             size += getSize(p);
         }
     }
+}
+
+void toLocaleKey(QString &locale)
+{
+    locale.push_front('[');
+    locale.push_back(']');
+}
+
+QString getDesktopValue(const QSettings &desktop, const std::vector<QString> &keys)
+{
+    for (const auto &key : keys)
+    {
+        if (desktop.contains(key))
+        {
+            return desktop.value(key).toString();
+        }
+    }
+    return QString();
 }
 
 
@@ -275,14 +294,34 @@ void MModel::resetImpl()
         }
     }
 
+    auto locale_full = QLocale::system().name();
+    auto locale_key_full = locale_full;
+    toLocaleKey(locale_key_full);
+
     QString name_key(QStringLiteral("Desktop Entry/Name"));
+    std::vector<QString> name_keys({name_key + locale_key_full});
+
     QString icon_key(QStringLiteral("Desktop Entry/Icon"));
+    std::vector<QString> icon_keys({icon_key + locale_key_full});
+
+    if (locale_full.size() > 2)
+    {
+        auto locale_key_short = locale_full.mid(0, 2);
+        toLocaleKey(locale_key_short);
+        name_keys.push_back(name_key + locale_key_short);
+        icon_keys.push_back(icon_key + locale_key_short);
+    }
+
+    name_keys.push_back(name_key);
+    icon_keys.push_back(icon_key);
+
     QString desktop_tmpl(QStringLiteral("%1/%2.desktop"));
-    QStringList icon_tmpls = {
+    std::vector<QString> icon_tmpls({
         QStringLiteral("/usr/share/icons/hicolor/86x86/apps/%1.png"),
         QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.0/icons/%1.png")
-    };
+    });
     auto desktop_paths = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
+    auto codec = QTextCodec::codecForName("utf-8");
     for (const auto &name : m_entries.keys())
     {
         for (const auto &path : desktop_paths)
@@ -293,8 +332,9 @@ void MModel::resetImpl()
                 auto &e = m_entries[name];
                 e.installed = true;
                 QSettings desktop(desktop_path, QSettings::IniFormat);
-                e.title = desktop.value(name_key).toString();
-                auto icon_name = desktop.value(icon_key, name).toString();
+                desktop.setIniCodec(codec);
+                e.title = getDesktopValue(desktop, name_keys);
+                auto icon_name = getDesktopValue(desktop, icon_keys);
                 for (const auto &tmpl : icon_tmpls)
                 {
                     auto icon = tmpl.arg(icon_name);
