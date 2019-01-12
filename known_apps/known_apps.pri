@@ -3,7 +3,8 @@ KNOWN_APPS = \
     $$PWD/filecase.ini \
     $$PWD/jolla-email.ini \
     $$PWD/sailfish-browser.ini \
-    $$PWD/harbour-telegrame.ini
+    $$PWD/harbour-telegrame.ini \
+    $$PWD/microtube.ini
 
 OTHER_FILES += \
     $$PWD/generator.py \
