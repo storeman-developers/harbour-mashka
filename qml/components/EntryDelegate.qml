@@ -65,6 +65,14 @@ ListItem {
         }
     }
 
+    ListView.onAdd: AddAnimation {
+        target: delegate
+    }
+
+    ListView.onRemove: RemoveAnimation {
+        target: delegate
+    }
+
     Image {
         id: iconItem
         anchors {

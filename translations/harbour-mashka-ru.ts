@@ -91,13 +91,13 @@
     </message>
     <message id="mashka-config">
         <location filename="../qml/components/DataLabel.qml" line="39"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="101"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="109"/>
         <source>Configuration</source>
         <translation>Настройки</translation>
     </message>
     <message id="mashka-cache">
         <location filename="../qml/components/DataLabel.qml" line="47"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="107"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="115"/>
         <source>Cache</source>
         <translation>Кэш</translation>
     </message>
@@ -149,7 +149,7 @@
     </message>
     <message id="mashka-localdata">
         <location filename="../qml/components/DataLabel.qml" line="55"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="113"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="121"/>
         <source>Local data</source>
         <translation>Локальные данные</translation>
     </message>
