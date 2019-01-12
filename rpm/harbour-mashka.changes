@@ -1,3 +1,11 @@
+* Sun Jan 13 2019 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.3.0-1
+- Fix handling empty directories and better size calculation
+- Add support for Telegram'me
+- Add support for microtube
+- Add support for openrepos-books
+- Entries list: add animations
+- Try to load localized names and icons for applications
+
 * Thu May 17 2018 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.2.0-1
 - Add Depecher to known apps
 - Update French
