@@ -15,7 +15,7 @@ qint64 getSize(const QString &path)
     QFileInfo info(path);
     if (info.isDir())
     {
-        QDirIterator it(path, QDir::Files | QDir::Hidden, QDirIterator::Subdirectories);
+        QDirIterator it(path, QDir::AllEntries | QDir::Hidden, QDirIterator::Subdirectories);
         while (it.hasNext())
         {
             it.next();
