@@ -437,17 +437,17 @@ void MModel::deleteUnusedDataImpl(DataTypes types)
 void MModel::calculateTotal()
 {
     m_unused_apps_count = 0;
-    m_total_localdata_size = 0;
-    m_total_cache_size = 0;
     m_total_config_size = 0;
+    m_total_cache_size = 0;
+    m_total_localdata_size = 0;
     m_unused_config_size = 0;
     m_unused_cache_size = 0;
     m_unused_localdata_size = 0;
     for (const auto &e : m_entries)
     {
-        m_total_localdata_size += e.config_size;
+        m_total_config_size    += e.config_size;
         m_total_cache_size     += e.cache_size;
-        m_total_config_size    += e.data_size;
+        m_total_localdata_size += e.data_size;
         if (!e.installed)
         {
             ++m_unused_apps_count;
