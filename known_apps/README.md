@@ -4,9 +4,9 @@ By default Mashka searches for the data of the applications with the help of [QS
 
 Type          | Path
 -------------:|-----------------------------------------
-Configuration | `/home/nemo/.config/harbour-foobar`
-Cache         | `/home/nemo/.cache/harbour-foobar`
-Local Data    | `/home/nemo/.local/share/harbour-foobar`
+Configuration | `$HOME/.config/harbour-foobar`
+Cache         | `$HOME/.cache/harbour-foobar`
+Local Data    | `$HOME/.local/share/harbour-foobar`
 
 But some applications use custom paths and Mashka should know where to search their files. To add such an application one must write a special configuration file and place it to the **harbour-mashka/generator/known_apps** directory.
 
@@ -31,7 +31,7 @@ Key          | Value
 
 ```ini
 [foobar]
-config=/home/nemo/.config/foo/bar.conf, /home/nemo/.config/foo/bar2.conf
-cache=/home/nemo/.cache/foo/bar/
-local_data=/home/nemo/.foobar/
+config=$HOME/.config/foo/bar.conf, $HOME/.config/foo/bar2.conf
+cache=$HOME/.cache/foo/bar/
+local_data=$HOME/.foobar/
 ```

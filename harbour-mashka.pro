@@ -13,6 +13,7 @@ SOURCES += \
     src/mproxymodel.cpp
 
 HEADERS += \
+    src/knownapp.h \
     src/mashka.h \
     src/mmodel.h \
     src/mproxymodel.h \

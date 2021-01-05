@@ -1,5 +1,4 @@
 #include "mmodel.h"
-#include <mknown_apps.hpp>
 
 #include <QTimer>
 #include <QtConcurrentRun>
@@ -8,6 +7,8 @@
 #include <QSettings>
 #include <QFileInfo>
 #include <QTextCodec>
+
+#include <known_apps.hpp>
 
 
 qint64 getSize(const QString &path)
@@ -32,7 +33,7 @@ qint64 getSize(const QString &path)
 
 void processKnownPaths(QStringList &paths, qint64 &size, const QStringList &known_paths)
 {
-    for (const auto &p : known_paths)
+    for (auto p : known_paths)
     {
         if (QFileInfo(p).exists())
         {
@@ -72,7 +73,28 @@ MModel::MModel(QObject *parent)
     , m_unused_config_size(0)
     , m_unused_cache_size(0)
     , m_unused_localdata_size(0)
+    , m_known_apps{known_apps_initializer()}
 {
+    const QLatin1String homevar{"$HOME"};
+    const auto homepath = QDir::homePath();
+    auto sethome = [&homevar, &homepath](QStringList &paths) {
+        for (auto &p : paths)
+        {
+            p.replace(homevar, homepath);
+        }
+    };
+
+    for (auto &app : m_known_apps)
+    {
+        sethome(app.config);
+        sethome(app.cache);
+        sethome(app.local_data);
+    }
+
+    QStringList exclude_paths{exclude_paths_initializer()};
+    sethome(exclude_paths);
+    m_exclude_paths = decltype(m_exclude_paths)::fromList(exclude_paths);
+
     QTimer::singleShot(500, this, &MModel::reset);
 }
 
@@ -231,7 +253,7 @@ void MModel::resetImpl()
     m_entries.clear();
 
     // Process known apps
-    for (const auto &app : knownApps())
+    for (const auto &app : m_known_apps)
     {
         MEntry e;
         processKnownPaths(e.config_paths, e.config_size, app.config);
@@ -247,8 +269,6 @@ void MModel::resetImpl()
 
     // Search for other apps
     QStringList filters(QStringLiteral("harbour-*"));
-    auto exclude = excludeDirs();
-    auto check_excludes = !exclude.pattern().isEmpty();
     QStringList app_paths = {
         QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation),
         QStandardPaths::writableLocation(QStandardPaths::GenericCacheLocation),
@@ -262,7 +282,7 @@ void MModel::resetImpl()
         {
             auto dirpath = it.next();
             // Don't add paths of known apps
-            if (check_excludes && exclude.match(dirpath).hasMatch())
+            if (m_exclude_paths.contains(dirpath))
             {
                 continue;
             }

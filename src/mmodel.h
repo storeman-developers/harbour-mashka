@@ -2,9 +2,10 @@
 #define VMODEL_H
 
 #include <QAbstractListModel>
+#include <QSet>
 
 #include "mentry.h"
-
+#include "knownapp.h"
 
 class MModel : public QAbstractListModel
 {
@@ -85,6 +86,8 @@ private:
     qint64 m_unused_localdata_size;
     QStringList m_names;
     QMap<QString, MEntry> m_entries;
+    QList<KnownApp> m_known_apps;
+    QSet<QString> m_exclude_paths;
 
     void setBusy(bool busy);
     qint64 removePaths(const QStringList &paths);
