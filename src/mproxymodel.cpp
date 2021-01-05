@@ -31,11 +31,19 @@ bool MProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_par
 {
     Q_UNUSED(source_parent);
 
-    if (m_process_config)
-    {
-        return true;
-    }
     auto model = static_cast<MModel *>(this->sourceModel());
-    auto &e = model->m_entries[model->m_names[source_row]];
-    return e.cache_size + e.data_size > 0;
+    auto &name = model->m_names[source_row];
+    auto &e = model->m_entries[name];
+    auto regex = this->filterRegExp();
+
+    if (name.contains(regex) || e.title.contains(regex))
+    {
+        if (m_process_config)
+        {
+            return true;
+        }
+        return e.cache_size + e.data_size > 0;
+    }
+
+    return false;
 }

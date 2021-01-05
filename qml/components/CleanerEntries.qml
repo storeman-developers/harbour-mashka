@@ -11,23 +11,54 @@ SilicaListView {
         id: proxyModel
         sortRole: MModel.SortRole
         sortCaseSensitivity: Qt.CaseInsensitive
+        filterCaseSensitivity: Qt.CaseInsensitive
         sourceModel: mmodel
         processConfig: mashka.processConfigEnabled
         onSourceModelChanged: sort(Qt.AscendingOrder)
     }
 
-    onCountChanged: proxyModel.sort(Qt.AscendingOrder)
+    header: Item {
+        property real _prevHeight: 0
 
-    header: PageHeader {
-        visible: isPortrait
-        height: visible ? _preferredHeight : 0.0
-        title: qsTrId("mashka-found")
-        description:
-            //% "%1 of data"
-            qsTrId("mashka-of-data").arg(prettyBytes(
-                mmodel.totalConfigSize + mmodel.totalCacheSize + mmodel.totalLocaldataSize)) + " " +
-            //% "of %n application(s)"
-            qsTrId("mashka-of-apps", mmodel.totalAppsCount)
+        width: parent.width
+        height: pageHeader.height + searchField.height + Theme.paddingSmall
+
+        onHeightChanged: {
+            if (height > _prevHeight) {
+                _prevHeight = height
+                positionViewAtBeginning()
+            }
+        }
+
+        PageHeader {
+            id: pageHeader
+            visible: isPortrait
+            height: visible ? _preferredHeight : 0.0
+            title: qsTrId("mashka-found")
+            description:
+                //% "%1 of data"
+                qsTrId("mashka-of-data").arg(prettyBytes(
+                    mmodel.totalConfigSize + mmodel.totalCacheSize + mmodel.totalLocaldataSize)) + " " +
+                //% "of %n application(s)"
+                qsTrId("mashka-of-apps", mmodel.totalAppsCount)
+        }
+
+        SearchField {
+            id: searchField
+            width: parent.width
+            anchors {
+                top: pageHeader.bottom
+                topMargin: Theme.paddingSmall
+            }
+            onTextChanged: searchDelay.restart()
+
+            Timer {
+                id: searchDelay
+                interval: 500
+                repeat: false
+                onTriggered: proxyModel.setFilterFixedString(searchField.text)
+            }
+        }
     }
 
     section {

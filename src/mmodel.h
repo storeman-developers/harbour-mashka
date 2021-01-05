@@ -32,7 +32,7 @@ public:
         ConfigSizeRole,
         CacheSizeRole,
         LocalDataSizeRole,
-        SortRole
+        SortRole,
     };
     Q_ENUM(Role)
 
