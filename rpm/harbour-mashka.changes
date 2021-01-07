@@ -1,3 +1,11 @@
+* Thu Jan  7 2021 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.4.1-1
+- Add search field
+- Remove hardcoded home directory
+- Add harbour-amazfish to known apps
+- Use Silica-provided size formatter
+- Use mlite5/MDesktopEntry for parsing desktop data
+- Fix icons of default apps on Sailfish X
+
 * Mon Jan 14 2019 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.3.2-1
 - Add Chinese (China) translations
 
