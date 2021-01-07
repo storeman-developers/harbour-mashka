@@ -4,6 +4,8 @@ TARGET = harbour-mashka
 
 CONFIG += sailfishapp
 
+PKGCONFIG += mlite5
+
 QT += concurrent
 
 SOURCES += \
