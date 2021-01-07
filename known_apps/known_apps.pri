@@ -5,7 +5,8 @@ KNOWN_APPS = \
     $$PWD/sailfish-browser.ini \
     $$PWD/harbour-telegrame.ini \
     $$PWD/microtube.ini \
-    $$PWD/openrepos-books.ini
+    $$PWD/openrepos-books.ini \
+    $$PWD/harbour-amazfish.ini
 
 OTHER_FILES += \
     $$PWD/generator.py \
