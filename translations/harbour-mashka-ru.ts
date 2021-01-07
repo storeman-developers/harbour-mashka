@@ -77,12 +77,6 @@
         <source>Cache</source>
         <translation>Кэш</translation>
     </message>
-    <message id="mashka-total">
-        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
-        <location filename="../qml/components/DataLabel.qml" line="66"/>
-        <source>Total</source>
-        <translation>Всего</translation>
-    </message>
     <message id="mashka-delete-config">
         <location filename="../qml/components/EntryDelegate.qml" line="38"/>
         <source>Delete configuration</source>
@@ -169,6 +163,12 @@
         <source>Deleted</source>
         <translation>Удалено</translation>
     </message>
+    <message id="mashka-total">
+        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
+        <location filename="../qml/components/DataLabel.qml" line="66"/>
+        <source>Total</source>
+        <translation>Всего</translation>
+    </message>
     <message id="mashka-empty">
         <location filename="../qml/components/SizeLabel.qml" line="13"/>
         <source>empty</source>
@@ -198,7 +198,7 @@
     <message id="mashka-app-description">
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Машка - сленговое название швабры для мойки палубы у русских моряков.&lt;/p&gt;&lt;p&gt;Mashka ищет и удаляет неиспользуемые данные, оставшиеся после удаления приложений Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;Машка - швабра для мойки палубы на жаргоне русских моряков.&lt;/p&gt;&lt;p&gt;Mashka ищет и удаляет неиспользуемые данные, оставшиеся после удаления приложений Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-app-licensing">
         <location filename="../qml/pages/AboutPage.qml" line="57"/>

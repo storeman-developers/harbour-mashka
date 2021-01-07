@@ -32,12 +32,14 @@
     <message id="mashka-notification-error-body">
         <location filename="../qml/harbour-mashka.qml" line="52"/>
         <source>Error deleting &amp;quot;%1&amp;quot;.</source>
-        <translation>Hiba a(z) &amp;quot;%1&amp;quot; törlésekor.</translation>
+        <oldsource>Error removing &amp;quot;%1&amp;quot;.</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message id="mashka-banner">
         <location filename="../qml/pages/BannerPage.qml" line="24"/>
         <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already deleted more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;Ahoy tengerész!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Már egy ideje használod az alkalmazást, és már több, mint %1 használaton kívüli adatot takarítottál ki.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Kérlek fontold meg, és támogasd a fejlesztőt egy kis adománnyal ;)&lt;/p&gt;</translation>
+        <oldsource>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already cleared more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message id="mashka-not-show">
         <location filename="../qml/pages/BannerPage.qml" line="49"/>
@@ -76,12 +78,6 @@
         <location filename="../qml/components/EntryDelegate.qml" line="115"/>
         <source>Cache</source>
         <translation>Gyorsítótár</translation>
-    </message>
-    <message id="mashka-total">
-        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
-        <location filename="../qml/components/DataLabel.qml" line="66"/>
-        <source>Total</source>
-        <translation>Összesen</translation>
     </message>
     <message id="mashka-delete-config">
         <location filename="../qml/components/EntryDelegate.qml" line="38"/>
@@ -167,6 +163,12 @@
         <source>Deleted</source>
         <translation>Törölve</translation>
     </message>
+    <message id="mashka-total">
+        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
+        <location filename="../qml/components/DataLabel.qml" line="66"/>
+        <source>Total</source>
+        <translation>Összesen</translation>
+    </message>
     <message id="mashka-empty">
         <location filename="../qml/components/SizeLabel.qml" line="13"/>
         <source>empty</source>
@@ -196,7 +198,8 @@
     <message id="mashka-app-description">
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;A Mashka az orosz tengerészek által a fedélzet felmosására használt felmosó szleng neve.&lt;/p&gt;&lt;p&gt;A Mashka megkeresi és eltávolítja a törölt Sailfish&amp;nbsp;OS alkalmazások által hátrahagyott használaton kívüli adatokat.&lt;/p&gt;</translation>
+        <oldsource>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and cleares unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message id="mashka-app-licensing">
         <location filename="../qml/pages/AboutPage.qml" line="57"/>

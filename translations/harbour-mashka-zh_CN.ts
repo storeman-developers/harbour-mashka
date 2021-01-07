@@ -32,17 +32,19 @@
     <message id="mashka-notification-error-body">
         <location filename="../qml/harbour-mashka.qml" line="52"/>
         <source>Error deleting &amp;quot;%1&amp;quot;.</source>
-        <translation>删除错误 &amp;quot;%1&amp;quot;.</translation>
+        <oldsource>Error removing &amp;quot;%1&amp;quot;.</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message id="mashka-banner">
         <location filename="../qml/pages/BannerPage.qml" line="24"/>
         <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already deleted more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;你好水手!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;你已多次使用本应用并且删除超过  %1  用过的数据。&lt;/p&gt;&lt;br /&gt;&lt;p&gt;不妨考虑做点小捐赠以支持开发者 ;)&lt;/p&gt;</translation>
+        <oldsource>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already cleared more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message id="mashka-not-show">
         <location filename="../qml/pages/BannerPage.qml" line="49"/>
         <source>Don&apos;t show again</source>
-        <translation>不要再次显示!</translation>
+        <translation>请勿再次显示!</translation>
     </message>
     <message id="mashka-found">
         <location filename="../qml/components/CleanerDashboard.qml" line="60"/>
@@ -58,7 +60,7 @@
     <message id="mashka-uninstalled">
         <location filename="../qml/components/CleanerEntries.qml" line="71"/>
         <source>Uninstalled</source>
-        <translation>未安装</translation>
+        <translation>已卸载</translation>
     </message>
     <message id="mashka-apps">
         <location filename="../qml/components/DataLabel.qml" line="31"/>
@@ -76,12 +78,6 @@
         <location filename="../qml/components/EntryDelegate.qml" line="115"/>
         <source>Cache</source>
         <translation>缓存</translation>
-    </message>
-    <message id="mashka-total">
-        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
-        <location filename="../qml/components/DataLabel.qml" line="66"/>
-        <source>Total</source>
-        <translation>总计</translation>
     </message>
     <message id="mashka-delete-config">
         <location filename="../qml/components/EntryDelegate.qml" line="38"/>
@@ -132,13 +128,13 @@
     <message id="mashka-of-data">
         <location filename="../qml/components/CleanerEntries.qml" line="40"/>
         <source>%1 of data</source>
-        <translation>%1 的数据</translation>
+        <translation>%1 数据</translation>
     </message>
     <message id="mashka-of-apps" numerus="yes">
         <location filename="../qml/components/CleanerEntries.qml" line="43"/>
         <source>of %n application(s)</source>
         <translation>
-            <numerusform> %n 的数据</numerusform>
+            <numerusform>of %n 个软件</numerusform>
         </translation>
     </message>
     <message id="mashka-hint-openentriespage">
@@ -167,10 +163,16 @@
         <source>Deleted</source>
         <translation>删除</translation>
     </message>
+    <message id="mashka-total">
+        <location filename="../qml/components/CleanerDashboard.qml" line="99"/>
+        <location filename="../qml/components/DataLabel.qml" line="66"/>
+        <source>Total</source>
+        <translation>总计</translation>
+    </message>
     <message id="mashka-empty">
         <location filename="../qml/components/SizeLabel.qml" line="13"/>
         <source>empty</source>
-        <translation>空空如也</translation>
+        <translation>数据为空</translation>
     </message>
     <message id="mashka-confirmation-warning">
         <location filename="../qml/pages/ConfirmationDialog.qml" line="47"/>
@@ -196,12 +198,13 @@
     <message id="mashka-app-description">
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Mashka是俄罗斯水手用来洗甲板的拖把的俚语。&lt;/p&gt;&lt;p&gt;Mashka搜索和删除卸载旗鱼系统应用之后残留的数据。&lt;/p&gt;</translation>
+        <oldsource>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and cleares unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message id="mashka-app-licensing">
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>&lt;p&gt;This is an open source software which is distributed under the terms of the&lt;br /&gt;&lt;a href=&apos;%1&apos;&gt;MIT License&lt;/a&gt;.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;这是一款在&lt;br /&gt;&lt;a href=&apos;%1&apos;&gt;MIT许可证&lt;/a&gt;之下的开源软件。&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;这是一款采用&lt;br /&gt;&lt;a href=&apos;%1&apos;&gt;MIT 许可证&lt;/a&gt;的开源软件。&lt;/p&gt;</translation>
     </message>
     <message id="mashka-development">
         <location filename="../qml/pages/AboutPage.qml" line="66"/>
@@ -232,7 +235,7 @@
     <message id="mashka-reset-counter">
         <location filename="../qml/pages/SettingsPage.qml" line="31"/>
         <source>Reset the counter of deleted data</source>
-        <translation>重置已删除数据的计数器</translation>
+        <translation>重置已删除数据计数器</translation>
     </message>
     <message id="mashka-advanced">
         <location filename="../qml/pages/SettingsPage.qml" line="41"/>
@@ -258,7 +261,7 @@
     <message id="mashka-allow-delete-all">
         <location filename="../qml/pages/SettingsPage.qml" line="84"/>
         <source>Allow delete all data for installed applications</source>
-        <translation>允许删除所有安装应用的数据</translation>
+        <translation>允许删除所有已安装软件的数据</translation>
     </message>
     <message id="mashka-allow-delete-all-note">
         <location filename="../qml/pages/SettingsPage.qml" line="86"/>
