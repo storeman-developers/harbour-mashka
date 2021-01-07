@@ -8,7 +8,7 @@ Label {
 
     width: parent.width
     text: label + ": " +
-          (value > 0 ? prettyBytes(value) :
+          (value > 0 ? Format.formatFileSize(value) :
                        //% "empty"
                        qsTrId("mashka-empty"))
     font.pixelSize: Theme.fontSizeTiny

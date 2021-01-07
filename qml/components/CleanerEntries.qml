@@ -37,7 +37,7 @@ SilicaListView {
             title: qsTrId("mashka-found")
             description:
                 //% "%1 of data"
-                qsTrId("mashka-of-data").arg(prettyBytes(
+                qsTrId("mashka-of-data").arg(Format.formatFileSize(
                     mmodel.totalConfigSize + mmodel.totalCacheSize + mmodel.totalLocaldataSize)) + " " +
                 //% "of %n application(s)"
                 qsTrId("mashka-of-apps", mmodel.totalAppsCount)

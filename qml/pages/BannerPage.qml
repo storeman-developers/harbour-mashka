@@ -21,7 +21,7 @@ Page {
         //% "<p>You're using the application for some time and have already "
         //% "deleted more than %1 of unused data.</p><br />"
         //% "<p>Please consider to make a small donation to support the developer ;)</p>"
-        text: qsTrId("mashka-banner").arg(prettyBytes(mashka.totalDeletedData))
+        text: qsTrId("mashka-banner").arg(Format.formatFileSize(mashka.totalDeletedData))
     }
 
     Grid {

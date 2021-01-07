@@ -12,7 +12,7 @@ CoverBackground {
                 qsTrId("mashka-working")
             } else if (mmodel.unusedAppsCount > 0) {
                 //% "%1 could be deleted"
-                qsTrId("mashka-cover-could-be-deleted").arg(prettyBytes(
+                qsTrId("mashka-cover-could-be-deleted").arg(Format.formatFileSize(
                     mmodel.unusedConfigSize + mmodel.unusedCacheSize + mmodel.unusedLocaldataSize))
             } else {
                 qsTrId("mashka-rescan")

@@ -37,7 +37,7 @@ Column {
         leftMargin: 0.0
         visible: mashka.processConfigEnabled && configSize > 0
         label: qsTrId("mashka-config")
-        value: prettyBytes(configSize)
+        value: Format.formatFileSize(configSize)
     }
 
     DetailItem {
@@ -45,7 +45,7 @@ Column {
         leftMargin: 0.0
         visible: cacheSize > 0
         label: qsTrId("mashka-cache")
-        value: prettyBytes(cacheSize)
+        value: Format.formatFileSize(cacheSize)
     }
 
     DetailItem {
@@ -53,7 +53,7 @@ Column {
         leftMargin: 0.0
         visible: localDataSize > 0
         label: qsTrId("mashka-localdata")
-        value: prettyBytes(localDataSize)
+        value: Format.formatFileSize(localDataSize)
     }
 
     DetailItem {
@@ -64,6 +64,6 @@ Column {
                   (localDataSize > 0) * 1) > 1
         //% "Total"
         label: qsTrId("mashka-total")
-        value: prettyBytes(configSize + cacheSize + localDataSize)
+        value: Format.formatFileSize(configSize + cacheSize + localDataSize)
     }
 }

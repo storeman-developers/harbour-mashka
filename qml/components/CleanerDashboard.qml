@@ -97,7 +97,7 @@ SilicaFlickable {
                 id: deletedDetailItem
                 anchors.top: deletedLabel.bottom
                 label: qsTrId("mashka-total")
-                value: prettyBytes(mashka.totalDeletedData)
+                value: Format.formatFileSize(mashka.totalDeletedData)
             }
         }
     }

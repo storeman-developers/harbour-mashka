@@ -19,40 +19,18 @@
         <source>%1 could be deleted</source>
         <translation>%1 törölhető</translation>
     </message>
-    <message id="mashka-bytes" numerus="yes">
-        <location filename="../qml/harbour-mashka.qml" line="19"/>
-        <source>%n byte(s)</source>
-        <translation>
-            <numerusform>%n bájt</numerusform>
-        </translation>
-    </message>
-    <message id="mashka-kb">
-        <location filename="../qml/harbour-mashka.qml" line="22"/>
-        <source>%1 KB</source>
-        <translation>%1 KB</translation>
-    </message>
-    <message id="mashka-mb">
-        <location filename="../qml/harbour-mashka.qml" line="25"/>
-        <source>%1 MB</source>
-        <translation>%1 MB</translation>
-    </message>
-    <message id="mashka-gb">
-        <location filename="../qml/harbour-mashka.qml" line="28"/>
-        <source>%1 GB</source>
-        <translation>%1 GB</translation>
-    </message>
     <message id="mashka-notification-deleted">
-        <location filename="../qml/harbour-mashka.qml" line="71"/>
+        <location filename="../qml/harbour-mashka.qml" line="44"/>
         <source>Deleted %1</source>
         <translation>%1 törölve</translation>
     </message>
     <message id="mashka-notification-error-title">
-        <location filename="../qml/harbour-mashka.qml" line="77"/>
+        <location filename="../qml/harbour-mashka.qml" line="50"/>
         <source>An error occured!</source>
         <translation>Hiba történt!</translation>
     </message>
     <message id="mashka-notification-error-body">
-        <location filename="../qml/harbour-mashka.qml" line="79"/>
+        <location filename="../qml/harbour-mashka.qml" line="52"/>
         <source>Error deleting &amp;quot;%1&amp;quot;.</source>
         <translation>Hiba a(z) &amp;quot;%1&amp;quot; törlésekor.</translation>
     </message>
@@ -68,17 +46,17 @@
     </message>
     <message id="mashka-found">
         <location filename="../qml/components/CleanerDashboard.qml" line="60"/>
-        <location filename="../qml/components/CleanerEntries.qml" line="38"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="37"/>
         <source>Found</source>
         <translation>Megtalálva</translation>
     </message>
     <message id="mashka-installed">
-        <location filename="../qml/components/CleanerEntries.qml" line="70"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="69"/>
         <source>Installed</source>
         <translation>Telepítve</translation>
     </message>
     <message id="mashka-uninstalled">
-        <location filename="../qml/components/CleanerEntries.qml" line="72"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="71"/>
         <source>Uninstalled</source>
         <translation>Eltávolítva</translation>
     </message>
@@ -89,13 +67,13 @@
     </message>
     <message id="mashka-config">
         <location filename="../qml/components/DataLabel.qml" line="39"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="111"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="109"/>
         <source>Configuration</source>
         <translation>Konfiguráció</translation>
     </message>
     <message id="mashka-cache">
         <location filename="../qml/components/DataLabel.qml" line="47"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="117"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="115"/>
         <source>Cache</source>
         <translation>Gyorsítótár</translation>
     </message>
@@ -106,58 +84,58 @@
         <translation>Összesen</translation>
     </message>
     <message id="mashka-delete-config">
-        <location filename="../qml/components/EntryDelegate.qml" line="40"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="38"/>
         <source>Delete configuration</source>
         <translation>A konfiguráció törlése</translation>
     </message>
     <message id="mashka-delete-all">
-        <location filename="../qml/components/EntryDelegate.qml" line="26"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="24"/>
         <source>Delete all data</source>
         <translation>Minden adat törlése</translation>
     </message>
     <message id="mashka-deleting-alldata">
-        <location filename="../qml/components/EntryDelegate.qml" line="28"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="26"/>
         <source>Deleting all data</source>
         <translation>Minden adat törlése</translation>
     </message>
     <message id="mashka-deleting-config">
-        <location filename="../qml/components/EntryDelegate.qml" line="42"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="40"/>
         <source>Deleting configuration</source>
         <translation>A konfiguráció törlése</translation>
     </message>
     <message id="mashka-delete-cache">
-        <location filename="../qml/components/EntryDelegate.qml" line="51"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="49"/>
         <source>Delete cache</source>
         <translation>Gyorsítótár törlése</translation>
     </message>
     <message id="mashka-deleting-cache">
-        <location filename="../qml/components/EntryDelegate.qml" line="53"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="51"/>
         <source>Deleting cache</source>
         <translation>Gyorsítótár törlése</translation>
     </message>
     <message id="mashka-delete-localdata">
-        <location filename="../qml/components/EntryDelegate.qml" line="62"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="60"/>
         <source>Delete local data</source>
         <translation>Helyi adatok törlése</translation>
     </message>
     <message id="mashka-deleting-localdata">
-        <location filename="../qml/components/EntryDelegate.qml" line="64"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="62"/>
         <source>Deleting local data</source>
         <translation>Helyi adatok törlése</translation>
     </message>
     <message id="mashka-localdata">
         <location filename="../qml/components/DataLabel.qml" line="55"/>
-        <location filename="../qml/components/EntryDelegate.qml" line="123"/>
+        <location filename="../qml/components/EntryDelegate.qml" line="121"/>
         <source>Local data</source>
         <translation>Helyi adatok</translation>
     </message>
     <message id="mashka-of-data">
-        <location filename="../qml/components/CleanerEntries.qml" line="41"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="40"/>
         <source>%1 of data</source>
         <translation>%1 adat</translation>
     </message>
     <message id="mashka-of-apps" numerus="yes">
-        <location filename="../qml/components/CleanerEntries.qml" line="44"/>
+        <location filename="../qml/components/CleanerEntries.qml" line="43"/>
         <source>of %n application(s)</source>
         <translation>
             <numerusform>%n alkalmazásé</numerusform>
