@@ -302,6 +302,7 @@ void MModel::resetImpl()
     std::vector<QString> icon_tmpls({
         QStringLiteral("/usr/share/icons/hicolor/86x86/apps/%1.png"),
         QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.0/icons/%1.png"),
+        QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.75/icons/%1.png"),
     });
     for (const auto &name : m_entries.keys())
     {
