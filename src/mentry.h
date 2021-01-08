@@ -1,6 +1,4 @@
-#ifndef MENTRY_H
-#define MENTRY_H
-
+#pragma once
 
 #include <QStringList>
 
@@ -26,5 +24,3 @@ struct MEntry
     QStringList cache_paths;
     QStringList data_paths;
 };
-
-#endif // MENTRY_H

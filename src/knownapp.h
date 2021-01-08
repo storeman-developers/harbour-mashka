@@ -1,5 +1,4 @@
-#ifndef KNOWNAPP_H
-#define KNOWNAPP_H
+#pragma once
 
 #include <QStringList>
 
@@ -10,5 +9,3 @@ struct KnownApp
     QStringList cache;
     QStringList local_data;
 };
-
-#endif // KNOWNAPP_H

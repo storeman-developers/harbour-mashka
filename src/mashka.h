@@ -1,5 +1,4 @@
-#ifndef MASHKA_H
-#define MASHKA_H
+#pragma once
 
 #include <QObject>
 
@@ -52,5 +51,3 @@ public slots:
 private:
     QSettings *m_settings;
 };
-
-#endif // MASHKA_H

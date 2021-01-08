@@ -1,5 +1,4 @@
-﻿#ifndef VMODEL_H
-#define VMODEL_H
+﻿#pragma once
 
 #include <QAbstractListModel>
 #include <QSet>
@@ -105,5 +104,3 @@ public:
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(MModel::DataTypes)
-
-#endif // VMODEL_H

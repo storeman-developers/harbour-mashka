@@ -1,8 +1,6 @@
-#ifndef PROXYMODEL_H
-#define PROXYMODEL_H
+#pragma once
 
 #include <QSortFilterProxyModel>
-
 
 class MProxyModel : public QSortFilterProxyModel
 {
@@ -27,5 +25,3 @@ private:
 protected:
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const;
 };
-
-#endif // PROXYMODEL_H
