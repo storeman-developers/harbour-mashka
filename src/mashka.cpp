@@ -14,12 +14,6 @@ Mashka::Mashka(QObject *parent)
     {
         m_settings->setValue(key, current + 1);
     }
-    QString oldkey(QStringLiteral("TotalCleared"));
-    if (m_settings->contains(oldkey))
-    {
-        m_settings->setValue(QStringLiteral("TotalDeleted"), m_settings->value(oldkey));
-        m_settings->remove(oldkey);
-    }
 }
 
 bool Mashka::showBanner() const
