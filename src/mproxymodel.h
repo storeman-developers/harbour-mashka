@@ -10,18 +10,23 @@ class MProxyModel : public QSortFilterProxyModel
 public:
     explicit MProxyModel(QObject *parent = nullptr);
 
-    bool processConfig() const;
+    bool processConfig() const {
+        return m_process_config;
+    }
+
     void setProcessConfig(bool value);
 
-    Q_INVOKABLE void sort(Qt::SortOrder order = Qt::AscendingOrder);
+    Q_INVOKABLE void sort(int column = 0, Qt::SortOrder order = Qt::AscendingOrder) override {
+        QSortFilterProxyModel::sort(column, order);
+    }
 
 signals:
     void processConfigChanged();
 
 private:
-    bool m_process_config;
+    bool m_process_config{false};
 
     // QSortFilterProxyModel interface
 protected:
-    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const;
+    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 };

@@ -4,20 +4,17 @@
 
 struct MEntry
 {
-    MEntry()
-        : installed(false)
-        , config_size(0)
-        , cache_size(0)
-        , data_size(0)
-    {}
+    MEntry() = default;
+    ~MEntry() = default;
 
-    inline bool exists()
-    { return config_size + cache_size + data_size > 0;}
+    bool exists() {
+        return config_size + cache_size + data_size > 0;
+    }
 
-    bool installed;
-    qint64 config_size;
-    qint64 cache_size;
-    qint64 data_size;
+    bool installed{false};
+    qint64 config_size{0};
+    qint64 cache_size{0};
+    qint64 data_size{0};
     QString title;
     QString icon;
     QStringList config_paths;

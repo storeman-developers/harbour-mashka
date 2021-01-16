@@ -3,14 +3,8 @@
 
 
 MProxyModel::MProxyModel(QObject *parent)
-    : QSortFilterProxyModel(parent)
-    , m_process_config(false)
+    : QSortFilterProxyModel{parent}
 {}
-
-bool MProxyModel::processConfig() const
-{
-    return m_process_config;
-}
 
 void MProxyModel::setProcessConfig(bool value)
 {
@@ -20,11 +14,6 @@ void MProxyModel::setProcessConfig(bool value)
         emit this->processConfigChanged();
         this->invalidateFilter();
     }
-}
-
-void MProxyModel::sort(Qt::SortOrder order)
-{
-    QSortFilterProxyModel::sort(0, order);
 }
 
 bool MProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const

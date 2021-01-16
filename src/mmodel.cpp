@@ -47,16 +47,7 @@ void processKnownPaths(QStringList &paths, qint64 &size, const QStringList &know
 
 
 MModel::MModel(QObject *parent)
-    : QAbstractListModel(parent)
-    , m_busy(false)
-    , m_resetting(false)
-    , m_unused_apps_count(0)
-    , m_total_cache_size(0)
-    , m_total_config_size(0)
-    , m_total_localdata_size(0)
-    , m_unused_config_size(0)
-    , m_unused_cache_size(0)
-    , m_unused_localdata_size(0)
+    : QAbstractListModel{parent}
     , m_known_apps{known_apps_initializer()}
 {
     const QLatin1String homevar{"$HOME"};
@@ -80,51 +71,6 @@ MModel::MModel(QObject *parent)
     m_exclude_paths = decltype(m_exclude_paths)::fromList(exclude_paths);
 
     QTimer::singleShot(500, this, &MModel::reset);
-}
-
-bool MModel::busy() const
-{
-    return m_busy;
-}
-
-bool MModel::resetting() const
-{
-    return m_resetting;
-}
-
-qint64 MModel::totalConfigSize() const
-{
-    return m_total_config_size;
-}
-
-qint64 MModel::totalCacheSize() const
-{
-    return m_total_cache_size;
-}
-
-qint64 MModel::totalLocaldataSize() const
-{
-    return m_total_localdata_size;
-}
-
-int MModel::unusedAppsCount() const
-{
-    return m_unused_apps_count;
-}
-
-qint64 MModel::unusedConfigSize() const
-{
-    return m_unused_config_size;
-}
-
-qint64 MModel::unusedCacheSize() const
-{
-    return m_unused_cache_size;
-}
-
-qint64 MModel::unusedLocaldataSize() const
-{
-    return m_unused_localdata_size;
 }
 
 void MModel::reset()

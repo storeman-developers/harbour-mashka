@@ -48,18 +48,43 @@ public:
     Q_FLAGS(DataTypes)
 
     explicit MModel(QObject *parent = nullptr);
+    ~MModel() = default;
 
-    bool busy() const;
-    bool resetting() const;
+    bool busy() const {
+        return m_busy;
+    }
 
-    qint64 totalConfigSize() const;
-    qint64 totalCacheSize() const;
-    qint64 totalLocaldataSize() const;
+    bool resetting() const {
+        return m_resetting;
+    }
 
-    int unusedAppsCount() const;
-    qint64 unusedConfigSize() const;
-    qint64 unusedCacheSize() const;
-    qint64 unusedLocaldataSize() const;
+    qint64 totalConfigSize() const {
+        return m_total_config_size;
+    }
+
+    qint64 totalCacheSize() const {
+        return m_total_cache_size;
+    }
+
+    qint64 totalLocaldataSize() const {
+        return m_total_localdata_size;
+    }
+
+    int unusedAppsCount() const {
+        return m_unused_apps_count;
+    }
+
+    qint64 unusedConfigSize() const {
+        return m_unused_config_size;
+    }
+
+    qint64 unusedCacheSize() const {
+        return m_unused_cache_size;
+    }
+
+    qint64 unusedLocaldataSize() const {
+        return m_unused_localdata_size;
+    }
 
 signals:
     void busyChanged();
@@ -74,15 +99,15 @@ public slots:
     void deleteUnusedData(DataTypes types);
 
 private:
-    bool m_busy;
-    bool m_resetting;
-    int m_unused_apps_count;
-    qint64 m_total_cache_size;
-    qint64 m_total_config_size;
-    qint64 m_total_localdata_size;
-    qint64 m_unused_config_size;
-    qint64 m_unused_cache_size;
-    qint64 m_unused_localdata_size;
+    bool m_busy{false};
+    bool m_resetting{false};
+    int m_unused_apps_count{0};
+    qint64 m_total_cache_size{0};
+    qint64 m_total_config_size{0};
+    qint64 m_total_localdata_size{0};
+    qint64 m_unused_config_size{0};
+    qint64 m_unused_cache_size{0};
+    qint64 m_unused_localdata_size{0};
     QStringList m_names;
     QMap<QString, MEntry> m_entries;
     QList<KnownApp> m_known_apps;

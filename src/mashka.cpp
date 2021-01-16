@@ -5,8 +5,8 @@
 
 
 Mashka::Mashka(QObject *parent)
-    : QObject(parent)
-    , m_settings(new QSettings(this))
+    : QObject{parent}
+    , m_settings{new QSettings{this}}
 {
     QString key(QStringLiteral("Launches"));
     auto current = m_settings->value(key, 0).toUInt();

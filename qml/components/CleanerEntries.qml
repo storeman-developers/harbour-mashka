@@ -14,7 +14,7 @@ SilicaListView {
         filterCaseSensitivity: Qt.CaseInsensitive
         sourceModel: mmodel
         processConfig: mashka.processConfigEnabled
-        onSourceModelChanged: sort(Qt.AscendingOrder)
+        onSourceModelChanged: sort()
     }
 
     header: Item {
