@@ -24,11 +24,11 @@ public:
     Q_INVOKABLE bool showBanner() const;
     Q_INVOKABLE void setBannerShowed();
 
-    Q_INVOKABLE bool showHint(const Hint &hint) const;
-    Q_INVOKABLE void setHintShowed(const Hint &hint);
+    Q_INVOKABLE bool showHint(Mashka::Hint hint) const;
+    Q_INVOKABLE void setHintShowed(Mashka::Hint hint);
 
     qint64 totalDeletedData() const;
-    Q_INVOKABLE void addDeletedData(const qint64 &size);
+    Q_INVOKABLE void addDeletedData(qint64 size);
     Q_INVOKABLE void resetDeletedData();
 
     bool advancedOptionsEnabled() const;

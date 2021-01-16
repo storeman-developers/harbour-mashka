@@ -35,9 +35,9 @@ qint64 getSize(const QString &path)
 
 void processKnownPaths(QStringList &paths, qint64 &size, const QStringList &known_paths)
 {
-    for (auto p : known_paths)
+    for (const auto &p : known_paths)
     {
-        if (QFileInfo(p).exists())
+        if (QFileInfo::exists(p))
         {
             paths << p;
             size += getSize(p);
@@ -45,6 +45,11 @@ void processKnownPaths(QStringList &paths, qint64 &size, const QStringList &know
     }
 }
 
+template <typename T>
+constexpr typename std::add_const<T>::type &asConst(T &t) noexcept
+{
+    return t;
+}
 
 MModel::MModel(QObject *parent)
     : QAbstractListModel{parent}
@@ -183,7 +188,7 @@ void MModel::resetImpl()
     m_entries.clear();
 
     // Process known apps
-    for (const auto &app : m_known_apps)
+    for (const auto &app : asConst(m_known_apps))
     {
         MEntry e;
         processKnownPaths(e.config_paths, e.config_size, app.config);
@@ -250,21 +255,20 @@ void MModel::resetImpl()
         QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.0/icons/%1.png"),
         QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.75/icons/%1.png"),
     });
-    for (const auto &name : m_entries.keys())
+    for (auto it = m_entries.begin(), end = m_entries.end(); it != end; ++it)
     {
-        MDesktopEntry desktop{QStandardPaths::locate(QStandardPaths::ApplicationsLocation, name + desktop_ext)};
+        MDesktopEntry desktop{QStandardPaths::locate(QStandardPaths::ApplicationsLocation, it.key() + desktop_ext)};
         if (desktop.isValid())
         {
-            auto &e = m_entries[name];
-            e.installed = true;
-            e.title = desktop.name();
+            it->installed = true;
+            it->title = desktop.name();
             auto icon_name = desktop.icon();
             for (const auto &tmpl : icon_tmpls)
             {
                 auto icon = tmpl.arg(icon_name);
                 if (QFileInfo(icon).isFile())
                 {
-                    e.icon = icon;
+                    it->icon = icon;
                     break;
                 }
             }
@@ -302,7 +306,7 @@ void MModel::deleteDataImpl(const QString &name, DataTypes types)
     else
     {
         auto ind = this->createIndex(row, 0);
-        this->dataChanged(ind, ind, changed);
+        emit this->dataChanged(ind, ind, changed);
     }
 
     if (deleted > 0)
@@ -342,7 +346,7 @@ void MModel::deleteUnusedDataImpl(DataTypes types)
         else
         {
             auto ind = this->createIndex(row, 0);
-            this->dataChanged(ind, ind, changed);
+            emit this->dataChanged(ind, ind, changed);
             ++it;
         }
     }
@@ -365,7 +369,7 @@ void MModel::calculateTotal()
     m_unused_config_size = 0;
     m_unused_cache_size = 0;
     m_unused_localdata_size = 0;
-    for (const auto &e : m_entries)
+    for (const auto &e : asConst(m_entries))
     {
         m_total_config_size    += e.config_size;
         m_total_cache_size     += e.cache_size;

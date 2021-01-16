@@ -95,8 +95,8 @@ signals:
 
 public slots:
     void reset();
-    void deleteData(const QString &name, DataTypes types);
-    void deleteUnusedData(DataTypes types);
+    void deleteData(const QString &name, MModel::DataTypes types);
+    void deleteUnusedData(MModel::DataTypes types);
 
 private:
     bool m_busy{false};

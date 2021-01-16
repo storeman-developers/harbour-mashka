@@ -47,12 +47,12 @@ void Mashka::setBannerShowed()
     m_settings->setValue(BANNERSEEN_KEY, true);
 }
 
-bool Mashka::showHint(const Hint &hint) const
+bool Mashka::showHint(Hint hint) const
 {
     return !m_settings->value(hint_key(hint), false).toBool();
 }
 
-void Mashka::setHintShowed(const Hint &hint)
+void Mashka::setHintShowed(Hint hint)
 {
     m_settings->setValue(hint_key(hint), true);
 }
@@ -62,7 +62,7 @@ qint64 Mashka::totalDeletedData() const
     return m_settings->value(TOTALDELETED_KEY, 0).toLongLong();
 }
 
-void Mashka::addDeletedData(const qint64 &size)
+void Mashka::addDeletedData(qint64 size)
 {
     auto current = m_settings->value(TOTALDELETED_KEY, 0).toLongLong();
     m_settings->setValue(TOTALDELETED_KEY, current + size);
