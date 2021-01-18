@@ -1,3 +1,9 @@
+* Mon Jan 18 2021 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.4.2-1
+- Optimize and refactor code
+- Update translations
+- Add Categories to the desktop file
+- Add entries for My Backup utility
+
 * Thu Jan  7 2021 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.4.1-1
 - Add search field
 - Remove hardcoded home directory
