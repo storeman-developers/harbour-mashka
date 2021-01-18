@@ -426,12 +426,12 @@ QVariant MModel::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> MModel::roleNames() const
 {
     return {
-        { NameRole,          "name" },
-        { TitleRole,         "title" },
-        { IconRole,          "icon" },
-        { InstalledRole,     "installed" },
-        { ConfigSizeRole,    "configSize" },
-        { CacheSizeRole,     "cacheSize" },
-        { LocalDataSizeRole, "localDataSize" }
+        { NameRole,          QByteArrayLiteral("name") },
+        { TitleRole,         QByteArrayLiteral("title") },
+        { IconRole,          QByteArrayLiteral("icon") },
+        { InstalledRole,     QByteArrayLiteral("installed") },
+        { ConfigSizeRole,    QByteArrayLiteral("configSize") },
+        { CacheSizeRole,     QByteArrayLiteral("cacheSize") },
+        { LocalDataSizeRole, QByteArrayLiteral("localDataSize") }
     };
 }
