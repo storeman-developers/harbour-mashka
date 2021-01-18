@@ -394,17 +394,18 @@ QVariant MModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
     {
-        return QVariant();
+        return QVariant{};
     }
 
     auto &name  = m_names[index.row()];
     auto &entry = m_entries[name];
+    auto &title = entry.title.isEmpty() ? name : entry.title;
     switch (role)
     {
     case NameRole:
         return name;
     case TitleRole:
-        return entry.title.isEmpty() ? name : entry.title;
+        return title;
     case IconRole:
         return entry.icon;
     case InstalledRole:
@@ -416,13 +417,10 @@ QVariant MModel::data(const QModelIndex &index, int role) const
     case LocalDataSizeRole:
         return entry.data_size;
     case SortRole:
-        return QString::number(int(!entry.installed))
-                    .append(entry.title.isEmpty() ? name : entry.title);
+        return QString{title}.prepend(entry.installed ? QChar{'0'} : QChar{'1'});
     default:
-        break;
+        return QVariant{};
     }
-
-    return QVariant();
 }
 
 QHash<int, QByteArray> MModel::roleNames() const
