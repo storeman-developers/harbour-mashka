@@ -5,3 +5,6 @@ X-Nemo-Application-Type=silica-qt5
 Icon=harbour-mashka
 Exec=harbour-mashka
 Name=Mashka
+
+[X-HarbourBackup]
+BackupPathList=.config/harbour-mashka/
