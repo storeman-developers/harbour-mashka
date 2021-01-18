@@ -80,8 +80,8 @@ Page {
                 }
 
                 Button {
-                    text: qsTrId("mashka-donate-with").arg("Yandex.Money")
-                    onClicked: Qt.openUrlExternally("https://money.yandex.ru/to/410012535782304")
+                    text: qsTrId("mashka-donate-with").arg("Tinkoff Bank")
+                    onClicked: Qt.openUrlExternally("https://www.tinkoff.ru/sl/AHE8JmExARH")
                 }
             }
         }
