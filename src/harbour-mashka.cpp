@@ -18,23 +18,6 @@ int main(int argc, char *argv[])
     auto app = SailfishApp::application(argc, argv);
     app->setApplicationVersion(QStringLiteral(MASHKA_VERSION));
 
-    {
-        auto *translator = new QTranslator(app);
-        auto path = SailfishApp::pathTo(QStringLiteral("translations")).toLocalFile();
-        auto name = app->applicationName();
-        // Check if translations have been already loaded
-        if (!translator->load(QLocale::system(), name, "-", path))
-        {
-            // Load default translations if not
-            translator->load(name, path);
-            app->installTranslator(translator);
-        }
-        else
-        {
-            translator->deleteLater();
-        }
-    }
-
     auto view = SailfishApp::createView();
     view->setSource(SailfishApp::pathToMainQml());
     view->show();
