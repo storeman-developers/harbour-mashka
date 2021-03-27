@@ -15,12 +15,12 @@ int main(int argc, char *argv[])
     qmlRegisterType<MProxyModel>("harbour.mashka", 1, 0, "MProxyModel");
     qRegisterMetaType<QVector<int>>();
 
-    auto app = SailfishApp::application(argc, argv);
-    app->setApplicationVersion(QStringLiteral(MASHKA_VERSION));
+    SailfishApp::application(argc, argv);
+    QCoreApplication::setApplicationVersion(QStringLiteral(MASHKA_VERSION));
 
     auto view = SailfishApp::createView();
     view->setSource(SailfishApp::pathToMainQml());
     view->show();
 
-    return app->exec();
+    return QCoreApplication::exec();
 }
