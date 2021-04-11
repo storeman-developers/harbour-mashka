@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 
 
 Label {
-    property int value: 0
+    property real value: 0
     property string label: ""
 
     width: parent.width

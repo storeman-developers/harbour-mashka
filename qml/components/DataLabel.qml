@@ -5,9 +5,9 @@ import Sailfish.Silica 1.0
 Column {
     property alias title: titleLabel.text
     property int appsCount: 0
-    property int configSize: 0
-    property int cacheSize: 0
-    property int localDataSize: 0
+    property real configSize: 0
+    property real cacheSize: 0
+    property real localDataSize: 0
 
     opacity: appsCount > 0 ? 1.0 : 0.0
     visible: opacity === 1.0
