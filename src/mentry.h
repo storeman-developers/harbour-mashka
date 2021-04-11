@@ -8,7 +8,7 @@ struct MEntry
     ~MEntry() = default;
 
     bool exists() const {
-        return config_size + cache_size + data_size > 0;
+        return config_size > 0 || cache_size > 0 || data_size > 0;
     }
 
     bool installed{false};
