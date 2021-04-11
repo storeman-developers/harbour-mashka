@@ -32,11 +32,13 @@
     <message id="mashka-notification-error-body">
         <location filename="../qml/harbour-mashka.qml" line="52"/>
         <source>Error deleting &amp;quot;%1&amp;quot;.</source>
+        <oldsource>Error removing &amp;quot;%1&amp;quot;.</oldsource>
         <translation>Kunde inte ta bort &amp;quot;%1&amp;quot;.</translation>
     </message>
     <message id="mashka-banner">
         <location filename="../qml/pages/BannerPage.qml" line="24"/>
         <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already deleted more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
+        <oldsource>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already cleared more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</oldsource>
         <translation>&lt;h3&gt;Ohoj, sjöman!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Du har använt appen ett tag och redan tagit bort mer än %1 oanvänd data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Överväg gärna en liten donation för att stödja utvecklaren. ;)&lt;/p&gt;</translation>
     </message>
     <message id="mashka-not-show">
@@ -197,6 +199,7 @@
     <message id="mashka-app-description">
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
+        <oldsource>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and cleares unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</oldsource>
         <translation>&lt;p&gt;Mashka är ett slangord, brukat av ryska sjömän, för moppen som används vid svabbning av fartygsdäck.&lt;/p&gt;&lt;p&gt;Mashka eftersöker och rensar bort oanvänd data, kvarlämnad efter borttagna av Sailfish&amp;nbsp;OS-appar.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-app-licensing">

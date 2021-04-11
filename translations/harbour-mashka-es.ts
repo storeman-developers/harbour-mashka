@@ -33,13 +33,13 @@
         <location filename="../qml/harbour-mashka.qml" line="52"/>
         <source>Error deleting &amp;quot;%1&amp;quot;.</source>
         <oldsource>Error removing &amp;quot;%1&amp;quot;.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Error al eliminar &amp;quot;%1&amp;quot;.</translation>
     </message>
     <message id="mashka-banner">
         <location filename="../qml/pages/BannerPage.qml" line="24"/>
         <source>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already deleted more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</source>
         <oldsource>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;You&apos;re using the application for some time and have already cleared more than %1 of unused data.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Please consider to make a small donation to support the developer ;)&lt;/p&gt;</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;Ahoy sailor!&lt;/h3&gt;&lt;br /&gt;&lt;p&gt;Llevas tiempo usando esta aplicación y ya has limpiado más de %1 de datos sin usar.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Por favor, considera hacer una pequeña donación para apoyar al desarrollador ;)&lt;/p&gt;</translation>
     </message>
     <message id="mashka-not-show">
         <location filename="../qml/pages/BannerPage.qml" line="49"/>
@@ -200,7 +200,7 @@
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
         <oldsource>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and cleares unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Mashka es la fregona que se usa para limpiar las cubiertas en el argot de los marineros rusos.&lt;/p&gt;&lt;p&gt;Mashka busca y limpia los datos sin usar que se quedan tras desinstalar las aplicaciones de Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-app-licensing">
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
