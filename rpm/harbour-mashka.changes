@@ -1,3 +1,8 @@
+* Sun Apr 11 2021 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.4.3-1
+- Code refactoring and cleaning
+- Fix size labels for values larger than 2GB
+- Update translations
+
 * Mon Jan 18 2021 Petr Tsymbarovich <petr@tsymbarovich.ru> 0.4.2-1
 - Optimize and refactor code
 - Update translations
