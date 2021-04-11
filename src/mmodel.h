@@ -113,9 +113,13 @@ private:
     QList<KnownApp> m_known_apps;
     QSet<QString> m_exclude_paths;
 
+    using entry_vals_t = std::pair<QStringList&, qint64&>;
+    using getter_t = entry_vals_t(MEntry&);
+
     void setBusy(bool busy);
     qint64 removePaths(const QStringList &paths);
     QVector<int> clearEntry(MEntry &entry, qint64 &deleted, DataTypes types);
+    void search(int location_kind, getter_t getter);
     void resetImpl();
     void deleteDataImpl(const QString &name, DataTypes types);
     void deleteUnusedDataImpl(DataTypes types);

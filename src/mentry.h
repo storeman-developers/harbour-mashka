@@ -7,7 +7,7 @@ struct MEntry
     MEntry() = default;
     ~MEntry() = default;
 
-    bool exists() {
+    bool exists() const {
         return config_size + cache_size + data_size > 0;
     }
 

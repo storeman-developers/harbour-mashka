@@ -1,7 +1,6 @@
 #include "mashka.h"
 
 #include <QSettings>
-#include <QMetaEnum>
 
 static const QString LAUNCHES_KEY{QStringLiteral("Launches")};
 static const QString BANNERSEEN_KEY{QStringLiteral("BannerSeen")};
@@ -9,19 +8,17 @@ static const QString TOTALDELETED_KEY{QStringLiteral("TotalDeleted")};
 static const QString ADVANCEDOPTIONS_KEY{QStringLiteral("AdvancedOptionsEnabled")};
 static const QString PROCESSCONFIG_KEY{QStringLiteral("ProcessConfigEnabled")};
 static const QString DELETEALLDATA_KEY{QStringLiteral("DeleteAllDataAllowed")};
+static const QString HINTS_GROUP{QStringLiteral("Hints")};
 
-QString hint_key(Mashka::Hint hint) {
-    auto me   = QMetaEnum::fromType<Mashka::Hint>();
-    auto name = me.valueToKey(hint);
-    Q_ASSERT(name);
-    return QStringLiteral("Hints/").append(name);
+static inline auto hint_key(Mashka::Hint hint) {
+    return QVariant::fromValue<Mashka::Hint>(hint).toString();
 }
 
 Mashka::Mashka(QObject *parent)
     : QObject{parent}
     , m_settings{new QSettings{this}}
 {
-    auto current = m_settings->value(LAUNCHES_KEY, 0).toUInt();
+    const auto current = m_settings->value(LAUNCHES_KEY, 0).toUInt();
     if (current < 10)
     {
         m_settings->setValue(LAUNCHES_KEY, current + 1);
@@ -35,8 +32,8 @@ bool Mashka::showBanner() const
         return false;
     }
 
-    auto deleted  = this->totalDeletedData();
-    auto launches = m_settings->value(LAUNCHES_KEY, 0).toUInt();
+    const auto deleted  = this->totalDeletedData();
+    const auto launches = m_settings->value(LAUNCHES_KEY, 0).toUInt();
 
     // 52428800 == 50 MB
     return deleted > 52428800 && launches >= 10;
@@ -49,12 +46,17 @@ void Mashka::setBannerShowed()
 
 bool Mashka::showHint(Hint hint) const
 {
-    return !m_settings->value(hint_key(hint), false).toBool();
+    m_settings->beginGroup(HINTS_GROUP);
+    const auto res = !m_settings->value(hint_key(hint), false).toBool();
+    m_settings->endGroup();
+    return res;
 }
 
 void Mashka::setHintShowed(Hint hint)
 {
+    m_settings->beginGroup(HINTS_GROUP);
     m_settings->setValue(hint_key(hint), true);
+    m_settings->endGroup();
 }
 
 qint64 Mashka::totalDeletedData() const
@@ -64,7 +66,7 @@ qint64 Mashka::totalDeletedData() const
 
 void Mashka::addDeletedData(qint64 size)
 {
-    auto current = m_settings->value(TOTALDELETED_KEY, 0).toLongLong();
+    const auto current = m_settings->value(TOTALDELETED_KEY, 0).toLongLong();
     m_settings->setValue(TOTALDELETED_KEY, current + size);
     emit this->totalDeletedDataChanged();
 }

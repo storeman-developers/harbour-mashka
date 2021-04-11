@@ -15,11 +15,11 @@
 
 qint64 getSize(const QString &path)
 {
-    qint64 res = 0;
-    QFileInfo info(path);
+    qint64 res{0};
+    const QFileInfo info{path};
     if (info.isDir())
     {
-        QDirIterator it(path, QDir::AllEntries | QDir::Hidden, QDirIterator::Subdirectories);
+        QDirIterator it{path, QDir::AllEntries | QDir::Hidden, QDirIterator::Subdirectories};
         while (it.hasNext())
         {
             it.next();
@@ -110,17 +110,15 @@ qint64 MModel::removePaths(const QStringList &paths)
         }
     }
 
-    qint64 res = 0;
+    qint64 res{0};
     for (const auto &p : paths)
     {
-        auto size = getSize(p);
+        const auto size = getSize(p);
 
 #ifndef SAFE_MODE
-        QFileInfo info(p);
-        bool ok = info.isDir()  ? QDir(p).removeRecursively() :
-                  info.isFile() ? QFile::remove(p)            : false;
-
-        if (ok)
+        const QFileInfo info{p};
+        if (   (info.isDir()  && QDir{p}.removeRecursively())
+            || (info.isFile() && QFile::remove(p)))
         {
             qDebug("Deleted %lld bytes '%s'", size, qUtf8Printable(p));
             res += size;
@@ -142,39 +140,49 @@ qint64 MModel::removePaths(const QStringList &paths)
 QVector<int> MModel::clearEntry(MEntry &entry, qint64 &deleted, DataTypes types)
 {
     QVector<int> changed;
+    const auto proc = [this, &types, &deleted, &changed](auto dtype, auto &size, const auto &paths, auto role) {
+        if (types.testFlag(dtype) && size > 0)
+        {
+            const auto c = removePaths(paths);
+            if (c > 0)
+            {
+                size = 0;
+                deleted += c;
+                changed << role;
+            }
+        }
+    };
 
-    if (types.testFlag(ConfigData) && entry.config_size > 0)
-    {
-        auto c = removePaths(entry.config_paths);
-        if (c > 0)
-        {
-            entry.config_size = 0;
-            deleted += c;
-            changed << ConfigSizeRole;
-        }
-    }
-    if (types.testFlag(CacheData) && entry.cache_size > 0)
-    {
-        auto c = removePaths(entry.cache_paths);
-        if (c > 0)
-        {
-            entry.cache_size = 0;
-            deleted += c;
-            changed << CacheSizeRole;
-        }
-    }
-    if (types.testFlag(LocalData) && entry.data_size > 0)
-    {
-        auto c = removePaths(entry.data_paths);
-        if (c > 0)
-        {
-            entry.data_size = 0;
-            deleted += c;
-            changed << LocalDataSizeRole;
-        }
-    }
+    proc(ConfigData, entry.config_size, entry.config_paths, ConfigSizeRole);
+    proc(CacheData,  entry.cache_size,  entry.cache_paths,  CacheSizeRole);
+    proc(LocalData,  entry.data_size,   entry.data_paths,   LocalDataSizeRole);
 
     return changed;
+}
+
+void MModel::search(int location_kind, MModel::getter_t getter)
+{
+    static const QStringList filters{QStringLiteral("harbour-*")};
+    const auto location = QStandardPaths::writableLocation(static_cast<QStandardPaths::StandardLocation>(location_kind));
+    QDirIterator it{location, filters, QDir::Dirs | QDir::NoDotAndDotDot};
+    while (it.hasNext()) {
+        const auto dirpath = it.next();
+        // Don't add paths of known apps
+        if (m_exclude_paths.contains(dirpath))
+        {
+            return;
+        }
+        const auto size = getSize(dirpath);
+        const auto dirname = it.fileName();
+        if (!m_entries.contains(dirname))
+        {
+            qDebug("Found a harbour app '%s'", qUtf8Printable(dirname));
+            m_names << dirname;
+        }
+        auto vals = getter(m_entries[dirname]);
+        vals.first << dirpath;
+        vals.second = size;
+    }
 }
 
 void MModel::resetImpl()
@@ -192,8 +200,8 @@ void MModel::resetImpl()
     {
         MEntry e;
         processKnownPaths(e.config_paths, e.config_size, app.config);
-        processKnownPaths(e.cache_paths, e.cache_size, app.cache);
-        processKnownPaths(e.data_paths, e.data_size, app.local_data);
+        processKnownPaths(e.cache_paths,  e.cache_size,  app.cache);
+        processKnownPaths(e.data_paths,   e.data_size,   app.local_data);
         if (e.exists())
         {
             qDebug("Found a known app '%s'", qUtf8Printable(app.name));
@@ -203,70 +211,34 @@ void MModel::resetImpl()
     }
 
     // Search for other apps
-    QStringList filters(QStringLiteral("harbour-*"));
-    QStringList app_paths = {
-        QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation),
-        QStandardPaths::writableLocation(QStandardPaths::GenericCacheLocation),
-        QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-    };
+    search(QStandardPaths::GenericConfigLocation, [](MEntry &e) {
+        return entry_vals_t{e.config_paths, e.config_size};
+    });
+    search(QStandardPaths::GenericCacheLocation, [](MEntry &e) {
+        return entry_vals_t{e.cache_paths, e.cache_size};
+    });
+    search(QStandardPaths::GenericDataLocation, [](MEntry &e) {
+        return entry_vals_t{e.data_paths, e.data_size};
+    });
 
-    for (int i = 0; i < 3; ++i)
-    {
-        QDirIterator it(app_paths[i], filters, QDir::Dirs | QDir::NoDotAndDotDot);
-        while (it.hasNext())
-        {
-            auto dirpath = it.next();
-            // Don't add paths of known apps
-            if (m_exclude_paths.contains(dirpath))
-            {
-                continue;
-            }
-            auto size = getSize(dirpath);
-            auto dirname = it.fileName();
-            if (!m_entries.contains(dirname))
-            {
-                qDebug("Found a harbour app '%s'", qUtf8Printable(dirname));
-                m_names << dirname;
-            }
-            auto &e = m_entries[dirname];
-            switch (i)
-            {
-            case 0:
-                e.config_paths << dirpath;
-                e.config_size = size;
-                break;
-            case 1:
-                e.cache_paths << dirpath;
-                e.cache_size = size;
-                break;
-            case 2:
-                e.data_paths << dirpath;
-                e.data_size = size;
-                break;
-            default:
-                Q_UNREACHABLE();
-            }
-        }
-    }
-
-    QLatin1String desktop_ext{".desktop"};
-    std::vector<QString> icon_tmpls({
+    const QLatin1String desktop_ext{".desktop"};
+    const QStringList icon_tmpls{
         QStringLiteral("/usr/share/icons/hicolor/86x86/apps/%1.png"),
         QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.0/icons/%1.png"),
         QStringLiteral("/usr/share/themes/sailfish-default/meegotouch/z1.75/icons/%1.png"),
-    });
+    };
     for (auto it = m_entries.begin(), end = m_entries.end(); it != end; ++it)
     {
-        MDesktopEntry desktop{QStandardPaths::locate(QStandardPaths::ApplicationsLocation, it.key() + desktop_ext)};
+        const MDesktopEntry desktop{QStandardPaths::locate(QStandardPaths::ApplicationsLocation, it.key() + desktop_ext)};
         if (desktop.isValid())
         {
             it->installed = true;
             it->title = desktop.name();
-            auto icon_name = desktop.icon();
+            const auto icon_name = desktop.icon();
             for (const auto &tmpl : icon_tmpls)
             {
-                auto icon = tmpl.arg(icon_name);
-                if (QFileInfo(icon).isFile())
+                const auto icon = tmpl.arg(icon_name);
+                if (QFileInfo{icon}.isFile())
                 {
                     it->icon = icon;
                     break;
@@ -293,20 +265,20 @@ void MModel::deleteDataImpl(const QString &name, DataTypes types)
 
     qint64 deleted = 0;
     auto &e = m_entries[name];
-    auto changed = clearEntry(e, deleted, types);
-    int row = m_names.indexOf(name);
+    const auto changed = clearEntry(e, deleted, types);
+    const int row = m_names.indexOf(name);
 
-    if (!e.exists())
+    if (e.exists())
+    {
+        const auto ind = this->createIndex(row, 0);
+        emit this->dataChanged(ind, ind, changed);
+    }
+    else
     {
         this->beginRemoveRows(QModelIndex(), row, row);
         m_names.removeOne(name);
         m_entries.remove(name);
         this->endRemoveRows();
-    }
-    else
-    {
-        auto ind = this->createIndex(row, 0);
-        emit this->dataChanged(ind, ind, changed);
     }
 
     if (deleted > 0)
@@ -332,22 +304,22 @@ void MModel::deleteUnusedDataImpl(DataTypes types)
             continue;
         }
 
-        auto changed = this->clearEntry(e, deleted, types);
-        auto &name = it.key();
-        int row = m_names.indexOf(name);
+        const auto changed = this->clearEntry(e, deleted, types);
+        const auto &name = it.key();
+        const int row = m_names.indexOf(name);
 
-        if (!e.exists())
+        if (e.exists())
+        {
+            const auto ind = this->createIndex(row, 0);
+            emit this->dataChanged(ind, ind, changed);
+            ++it;
+        }
+        else
         {
             this->beginRemoveRows(QModelIndex(), row, row);
             m_names.removeOne(name);
             it = m_entries.erase(it);
             this->endRemoveRows();
-        }
-        else
-        {
-            auto ind = this->createIndex(row, 0);
-            emit this->dataChanged(ind, ind, changed);
-            ++it;
         }
     }
 
@@ -397,9 +369,9 @@ QVariant MModel::data(const QModelIndex &index, int role) const
         return QVariant{};
     }
 
-    auto &name  = m_names[index.row()];
-    auto &entry = m_entries[name];
-    auto &title = entry.title.isEmpty() ? name : entry.title;
+    const auto &name  = m_names[index.row()];
+    const auto &entry = m_entries[name];
+    const auto &title = entry.title.isEmpty() ? name : entry.title;
     switch (role)
     {
     case NameRole:
