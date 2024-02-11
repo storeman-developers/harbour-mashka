@@ -46,7 +46,7 @@ Page {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.highlightColor
-                text: qsTrId ("(C) 2020-2021 Petr Tsymbarovich (mentaljam)" + "<br />")
+                text: qsTrId ("(C) 2018-2021 Petr Tsymbarovich (mentaljam)" + "<br />")
                 font.pixelSize: Theme.fontSizeSmall
             }
 
