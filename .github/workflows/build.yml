@@ -1,0 +1,52 @@
+name: Sailfish App Build
+
+on:
+  pull_request:
+    branches:
+      - master
+  # Allows to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+defaults:
+  run:
+    # Note that 'bash' provides -o pipefail, in contrast to the default (i.e., unspecified, which also uses bash) or 'sh',
+    # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: sh
+
+# See, e.g.: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+concurrency:
+  group: ci-${{ github.ref_name }}
+  # 'false' (default) allows for two concurrent runs, one executing and one freshly enqueued; 'true' for only one; no 'concurrency:' defined for multiple.
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    env:
+      RELEASE: 4.5.0.16
+      SEGMENT_DOWNLOAD_TIMEOUT_MINS: 2
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Prepare
+      run: mkdir RPMS
+
+    - name: Build aarch64 on ${{ env.RELEASE }}
+      uses: coderus/github-sfos-build@master
+      with:
+        release: ${{ env.RELEASE }}
+        arch: aarch64
+
+    - name: Build armv7hl on ${{ env.RELEASE }}
+      uses: coderus/github-sfos-build@master
+      with:
+        release: ${{ env.RELEASE }}
+        arch: armv7hl
+
+    - name: Upload build results
+      uses: actions/upload-artifact@v3
+      with:
+        name: RPM-build-results_SFOS${{ env.RELEASE }}+
+        path: RPMS/

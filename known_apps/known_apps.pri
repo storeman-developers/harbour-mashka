@@ -6,6 +6,8 @@ KNOWN_APPS = \
     $$PWD/harbour-telegrame.ini \
     $$PWD/microtube.ini \
     $$PWD/openrepos-books.ini \
+    $$PWD/harbour-storeman.ini \
+    $$PWD/harbour-meecast.ini \
     $$PWD/harbour-amazfish.ini
 
 OTHER_FILES += \
