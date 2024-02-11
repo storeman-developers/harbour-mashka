@@ -2,6 +2,7 @@ KNOWN_APPS = \
     $$PWD/depecher.ini \
     $$PWD/filecase.ini \
     $$PWD/sailfish-browser.ini \
+    $$PWD/jolla-email.ini \
     $$PWD/harbour-telegrame.ini \
     $$PWD/microtube.ini \
     $$PWD/openrepos-books.ini \
@@ -19,3 +20,4 @@ known_apps.commands = python3 $$PWD/generator.py ./
 known_apps.CONFIG += no_link target_predeps combine
 
 QMAKE_EXTRA_COMPILERS += known_apps
+

@@ -192,53 +192,40 @@
         <translation>Я полностью осознаю риски</translation>
     </message>
     <message id="mashka-about">
+        <location filename="../qml/AboutPage.qml" line="19"/>
         <location filename="../qml/components/CleanerDashboard.qml" line="15"/>
         <location filename="../qml/pages/AboutPage.qml" line="19"/>
         <source>About Mashka</source>
         <translation>О приложении</translation>
     </message>
-    <message id="Original author:">
-        <location filename="../qml/pages/AboutPage.qml" line="42"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="(C) 2020-2021 Petr Tsymbarovich (mentaljam)<br />">
-        <location filename="../qml/pages/AboutPage.qml" line="49"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="Contributors:">
-        <location filename="../qml/pages/AboutPage.qml" line="56"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="(C) 2024 Rudi Timmermans (rudi1970)<br />">
-        <location filename="../qml/pages/AboutPage.qml" line="63"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
     <message id="mashka-app-description">
+        <location filename="../qml/AboutPage.qml" line="82"/>
         <location filename="../qml/pages/AboutPage.qml" line="82"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
         <oldsource>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and cleares unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</oldsource>
         <translation>&lt;p&gt;Машка - швабра для мойки палубы на жаргоне русских моряков.&lt;/p&gt;&lt;p&gt;Mashka ищет и удаляет неиспользуемые данные, оставшиеся после удаления приложений Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-app-licensing">
+        <location filename="../qml/AboutPage.qml" line="85"/>
         <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>&lt;p&gt;This is an open source software which is distributed under the terms of the&lt;br /&gt;&lt;a href=&apos;%1&apos;&gt;MIT License&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Исходный код приложения распространяется в соответствии с условиями &lt;a href=&apos;%1&apos;&gt;лицензии MIT&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-development">
+        <location filename="../qml/AboutPage.qml" line="94"/>
         <location filename="../qml/pages/AboutPage.qml" line="94"/>
         <source>Development</source>
         <translation>Разработка</translation>
     </message>
     <message id="mashka-translations">
+        <location filename="../qml/AboutPage.qml" line="100"/>
         <location filename="../qml/pages/AboutPage.qml" line="100"/>
         <source>Translations</source>
         <translation>Переводы</translation>
     </message>
     <message id="mashka-donate-with">
+        <location filename="../qml/AboutPage.qml" line="106"/>
+        <location filename="../qml/AboutPage.qml" line="111"/>
         <location filename="../qml/pages/AboutPage.qml" line="106"/>
         <location filename="../qml/pages/AboutPage.qml" line="111"/>
         <source>Donate with %1</source>
@@ -289,6 +276,31 @@
         <location filename="../qml/pages/SettingsPage.qml" line="86"/>
         <source>By default only cache can be deleted</source>
         <translation>По умолчанию можно удалять только кэш</translation>
+    </message>
+</context>
+<context>
+    <name>AboutPage</name>
+    <message>
+        <location filename="../qml/AboutPage.qml" line="42"/>
+        <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <source>Original author:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/AboutPage.qml" line="49"/>
+        <source>(C) 2018-2021 Petr Tsymbarovich (mentaljam)&lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/AboutPage.qml" line="56"/>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
+        <source>Contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/AboutPage.qml" line="63"/>
+        <source>(C) 2024 Rudi Timmermans (rudi1970)&lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

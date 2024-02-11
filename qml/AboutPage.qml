@@ -46,7 +46,7 @@ Page {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.highlightColor
-                text: "(C) 2018-2021 Petr Tsymbarovich (mentaljam)" + "<br />"
+                text: qsTr("(C) 2018-2021 Petr Tsymbarovich (mentaljam)" + "<br />")
                 font.pixelSize: Theme.fontSizeSmall
             }
 
@@ -60,7 +60,7 @@ Page {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.highlightColor
-                text: "(C) 2024 Rudi Timmermans (rudi1970)" + "<br />"
+                text: qsTr("(C) 2024 Rudi Timmermans (rudi1970)" + "<br />")
                 font.pixelSize: Theme.fontSizeSmall
             }
 
