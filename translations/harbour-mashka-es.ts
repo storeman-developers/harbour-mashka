@@ -196,30 +196,50 @@
         <source>About Mashka</source>
         <translation>Acerca de Mashka</translation>
     </message>
+    <message id="Original author:">
+        <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="(C) 2020-2021 Petr Tsymbarovich (mentaljam)<br />">
+        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="Contributors:">
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="(C) 2024 Rudi Timmermans (rudi1970)<br />">
+        <location filename="../qml/pages/AboutPage.qml" line="63"/>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
     <message id="mashka-app-description">
-        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <location filename="../qml/pages/AboutPage.qml" line="82"/>
         <source>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and deleted unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</source>
         <oldsource>&lt;p&gt;Mashka is the slang name of the mop for deck washing used by Russian sailors.&lt;/p&gt;&lt;p&gt;Mashka searches for and cleares unused data leaved after removed Sailfish&amp;nbsp;OS applications.&lt;/p&gt;</oldsource>
         <translation>&lt;p&gt;Mashka es la fregona que se usa para limpiar las cubiertas en el argot de los marineros rusos.&lt;/p&gt;&lt;p&gt;Mashka busca y limpia los datos sin usar que se quedan tras desinstalar las aplicaciones de Sailfish&amp;nbsp;OS.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-app-licensing">
-        <location filename="../qml/pages/AboutPage.qml" line="57"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>&lt;p&gt;This is an open source software which is distributed under the terms of the&lt;br /&gt;&lt;a href=&apos;%1&apos;&gt;MIT License&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Esta es una aplicación de código abierto que se distribuye bajo los términos de la&lt;br /&gt;&lt;a href=&apos;%1&apos;&gt;Licencia MIT&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message id="mashka-development">
-        <location filename="../qml/pages/AboutPage.qml" line="66"/>
+        <location filename="../qml/pages/AboutPage.qml" line="94"/>
         <source>Development</source>
         <translation>Desarrollo</translation>
     </message>
     <message id="mashka-translations">
-        <location filename="../qml/pages/AboutPage.qml" line="72"/>
+        <location filename="../qml/pages/AboutPage.qml" line="100"/>
         <source>Translations</source>
         <translation>Traducciones</translation>
     </message>
     <message id="mashka-donate-with">
-        <location filename="../qml/pages/AboutPage.qml" line="78"/>
-        <location filename="../qml/pages/AboutPage.qml" line="83"/>
+        <location filename="../qml/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/pages/AboutPage.qml" line="111"/>
         <source>Donate with %1</source>
         <translation>Donar con %1</translation>
     </message>

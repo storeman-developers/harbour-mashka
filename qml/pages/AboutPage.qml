@@ -33,7 +33,35 @@ Page {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.highlightColor
-                text: "Mashka " + Qt.application.version
+                text: "Mashka " + Qt.application.version + "<br />"
+            }
+
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.highlightColor
+                text: qsTrId("Original author:")
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.highlightColor
+                text: qsTrId ("(C) 2020-2021 Petr Tsymbarovich (mentaljam)" + "<br />")
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.highlightColor
+                text: qsTrId("Contributors:")
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.highlightColor
+                text: qsTrId("(C) 2024 Rudi Timmermans (rudi1970)" + "<br />")
+                font.pixelSize: Theme.fontSizeSmall
             }
 
             Label {
