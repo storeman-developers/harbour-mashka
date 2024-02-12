@@ -1,10 +1,12 @@
 [Desktop Entry]
 Type=Application
-Categories=System;FileTools;
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-mashka
 Exec=harbour-mashka
 Name=Mashka
+
+[X-Sailjail]
+Sandboxing=Disabled
 
 [X-HarbourBackup]
 BackupPathList=.config/harbour-mashka/
