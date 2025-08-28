@@ -7,4 +7,9 @@ Exec=harbour-mashka
 Name=Mashka
 
 [X-HarbourBackup]
-BackupPathList=.config/harbour-mashka/
+BackupPathList=.config/harbour-mashka
+
+[X-Sailjail]
+Sandboxing=Disabled
+OrganizationName=harbour-mashka
+ApplicationName=harbour-mashka 
